@@ -1,6 +1,6 @@
 Matrix Operations
 =================
-Troy Feng ([email](https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRspgznCfqVPTvZlFBltnrVqhMNsWdjVQdXknVGnTXNPvvvcHFNBPPRckjhMPhkkvDnvrVB))
+Troy Feng ([email](mailto:troy.feng@yale.edu))
 ----------------
 
 This collection of classes represents a variety of matrix operations, namely determinant, row reduced echelon form, matrix inverse, and (somewhat flimsy and not-at-all robust) eigenvalue computation. 
