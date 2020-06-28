@@ -102,7 +102,7 @@ public class MatrixOperations {
 	
 	/* Given a permutation of p, returns the next lexicographical permutation of the elements
 	 * of p. Similar to next largest integer with same digits problem. */
-	public static boolean generateAllPerms(int[] p) {
+	public static boolean nextPermutation(int[] p) {
 		int n = p.length;
 		int k = n-2;
 		while (k >= 0 && p[k] > p[k+1]) k--;
@@ -132,23 +132,17 @@ public class MatrixOperations {
 			System.err.println("Matrix must be square to calculate determinant");
 			return 0;
 		}
-		int sum = 0;
 		int[] permutation = new int[dim];
-		for (int i = 0; i < permutation.length; i++) {
-			permutation[i] = i;
-		}
-		int prod = 1;
-		for (int j = 0; j < dim; j++) {
-			prod *= m.element(j, permutation[j]);
-		}
-		sum += sign1(permutation) * prod;
-		while (generatePerm(permutation)) {
-			prod = 1;
+		for (int i = 1; i < dim; i++) permutation[i] = i;
+		int sum = 0;
+		do {
+			int prod = 1;
 			for (int j = 0; j < dim; j++) {
 				prod *= m.element(j, permutation[j]);
 			}
 			sum += sign1(permutation) * prod;
-		}
+		} while (nextPermutation(permutation));
+
 		return sum;
 	}
 	
