@@ -1,11 +1,13 @@
-/* Implements Polynomial objects and methods. */
+/* Class Polynomial implements Polynomial objects and methods. */
 
 public class Polynomial {
 	
+	/* Adjustable window of accuracy for root-finding. */
 	private static final double EPSILON = 10E-6;
 	int degree;
-	int[] coefficients; /* Represents coefficients of polynomial, where coefficients[i] represents coefficient of x^i term.
-	 					Contains degree+1 entries, e.g. a constant is represented by a 1-dimensional array. */
+	/* Represents coefficients of polynomial, where coefficients[i] represents coefficient of x^i term.
+	 * Contains degree+1 entries, e.g. a constant is represented by a 1-dimensional array. */
+	int[] coefficients; 
 	
 	public Polynomial(int d, int[] c) {
 		if (c.length != d+1)

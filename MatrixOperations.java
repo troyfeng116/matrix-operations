@@ -75,12 +75,13 @@ public class MatrixOperations {
 	 * algebraic definition of sgn(permutation). Note sign2 must take input of the n integers from
 	 * 1 through n, while sign1 works for any permutation of any n integers. */
 	public static int sign1(int[] permutation) {
-		int numInversions = mSortInversions(permutation, 0, permutation.length - 1);
-		//System.out.println(numInversions);
-		if (numInversions % 2 == 1) return -1;
-		return 1;
+		int[] copy = Arrays.copyOf(permutation, permutation.length);
+		int numInversions = mSortInversions(copy, 0, permutation.length - 1);
+		return numInversions%2==1 ? -1 : 1;
 	}
 	
+	/* If permutation contains only 1-n, PROD_{1<=i<j<=n} (p[i]-p[j])/(i-j) yields the number of
+	 * inversions.  */
 	public static int sign2(int[] permutation) {
 		double product = 1.0;
 		int len = permutation.length;
@@ -99,26 +100,53 @@ public class MatrixOperations {
 		else return n * factorial(n-1);
 	}
 	
-	/* Returns array of n! arrays, one of each of the n! permutations of the n integers from 1 to n. */
-	public static int[][] generatePerms1(int n, int l, int r) {
-		for (int i = l; i < r; i++) {
-			
+	/* Given a permutation of p, returns the next lexicographical permutation of the elements
+	 * of p. Similar to next largest integer with same digits problem. */
+	public static boolean generateAllPerms(int[] p) {
+		int n = p.length;
+		int k = n-2;
+		while (k >= 0 && p[k] > p[k+1]) k--;
+		if (k < 0) return false;
+		int l = n-1;
+		while (p[l] < p[k]) l--;
+		int temp = p[k];
+		p[k] = p[l];
+		p[l] = temp;
+		for (int i = k+1; i <= (k+n)/2; i++) {
+			temp = p[i];
+			p[i] = p[n-i+k];
+			p[n-i+k] = temp;
 		}
-		return new int[0][0];
+		return true;
 	}
 	
-	/* Does same thing as generatePerms, except implements Heap's algorithm. */
+	/* Generates all permutations of n integers from 0 to n-1 using Heap's algorithm. */
 	public static int[][] generatePerms2(int n) {
 		return new int[0][0];
 	}
 	
 	/* det1 calculates determinant of matrix using explicit Leibniz or Laplace formula. */
 	public static int det1(Matrix m) {
+		int dim = m.nCols();
+		if (dim != m.nRows()) {
+			System.err.println("Matrix must be square to calculate determinant");
+			return 0;
+		}
 		int sum = 0;
-		for (int[] permutation: generatePerms2(m.nRows())) {
-			int prod = 1;
-			for (int j = 0; j < m.nRows(); j++)
+		int[] permutation = new int[dim];
+		for (int i = 0; i < permutation.length; i++) {
+			permutation[i] = i;
+		}
+		int prod = 1;
+		for (int j = 0; j < dim; j++) {
+			prod *= m.element(j, permutation[j]);
+		}
+		sum += sign1(permutation) * prod;
+		while (generatePerm(permutation)) {
+			prod = 1;
+			for (int j = 0; j < dim; j++) {
 				prod *= m.element(j, permutation[j]);
+			}
 			sum += sign1(permutation) * prod;
 		}
 		return sum;
