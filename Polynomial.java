@@ -160,7 +160,10 @@ public class Polynomial {
 	}
 	
 	/* This root-finding algorithm uses Cauchy's polynomial root upper bound, and then applies Aberth-Ehrlich algorithm
-	 * to n random initial approximations. */
+	 * to n random initial approximations.
+	 * 
+	 * https://en.wikipedia.org/wiki/Aberth_method
+	 * https://en.wikipedia.org/wiki/Geometrical_properties_of_polynomial_roots#Lagrange's_and_Cauchy's_bounds */
 	public double[] findAllRoots() {
 		/* Find and store largest magnitude coefficient, not including c_n coefficient. */
 		double maxCoef = Double.MIN_VALUE;
@@ -196,6 +199,4 @@ public class Polynomial {
 		}
 		return guesses;
 	}
-	
-
 }
