@@ -140,6 +140,7 @@ public class MatrixOperations {
 			for (int j = 0; j < dim; j++) {
 				prod *= m.element(j, permutation[j]);
 			}
+			/* Note that if sign2 is used, permutation must be one-based, not zero-based. */
 			sum += sign1(permutation) * prod;
 		} while (nextPermutation(permutation));
 
@@ -207,6 +208,7 @@ public class MatrixOperations {
 		System.out.println("CURRENTLY CREATING PIVOT IN COLUMN: " + currentCol);
 		System.out.println("Entries is right now: ");
 		printFracArray(entries);
+
 		int nCols = entries[0].length;
 		int nRows = entries.length;
 		/* Base case. */
@@ -252,14 +254,12 @@ public class MatrixOperations {
 						System.out.println(" times row " + currentRow + " from temp row " + row);
 					}
 				}
-				System.out.println("After adding row operation: ");
-				printFracArray(temp);
 				/* Multiply current row by reciprocal of pivot. */
 				Fraction reciprocal = temp[currentRow][currentCol].reciprocal();
 				for (int j = 0; j < nCols; j++) {
 					temp[currentRow][j] = reciprocal.multiply(temp[currentRow][j]);
 				}
-				System.out.println("After scaling row: ");
+				System.out.println("After adding row operations and scaling row: ");
 				printFracArray(temp);
 				/* Recurse. */
 				for (int i = 0; i < nRows; i++)
@@ -274,7 +274,8 @@ public class MatrixOperations {
 
 	/* Calculate the inverse of a matrix using Gauss-Jordan elimination. */
 	public static Matrix inverse(Matrix m) {
-		if (m.nRows() != m.nCols()) {
+		int dim = m.nRows();
+		if (m.nCols() != dim) {
 			System.err.println("Matrix must be square");
 			return null;
 		}
@@ -282,7 +283,6 @@ public class MatrixOperations {
 			System.err.println("Matrix is not invertible");
 			return null;
 		}
-		int dim = m.nRows();
 		Fraction[][] augmented = new Fraction[dim][2 * dim];
 		for (int row = 0; row < dim; row++) {
 			for (int col = 0; col < dim; col++)
@@ -333,18 +333,14 @@ public class MatrixOperations {
 		if (degree == 1) {
 			return entries[0][0];
 		}
-		/*else if (dim == 2)
-			return m.element(0, 0) * m.element(1, 1) - m.element(1, 0) * m.element(0, 1);*/
-		else {
-			Polynomial sum = new Polynomial(0, new int[] {0});
-			for (int i = 0; i < degree; i++) {
-				Polynomial mult = entries[0][i];
-				if (i % 2 == 0)
-					sum = sum.add(mult.multiply(charPolyAux(subArray(entries,0,i))));
-				else sum = sum.subtract(mult.multiply(charPolyAux(subArray(entries,0,i))));
-			}
-			return sum;
+		Polynomial sum = new Polynomial(0, new int[] {0});
+		for (int i = 0; i < degree; i++) {
+			Polynomial mult = entries[0][i];
+			if (i % 2 == 0)
+				sum = sum.add(mult.multiply(charPolyAux(subArray(entries,0,i))));
+			else sum = sum.subtract(mult.multiply(charPolyAux(subArray(entries,0,i))));
 		}
+		return sum;
 	}
 	
 	/* Similar to subMat used in det2, but returns sub-array of polynomial array. */
