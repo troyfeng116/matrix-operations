@@ -12,14 +12,9 @@ public class MatrixOperations {
 	private static int mergeAndCount(int[] permutation, int l, int m, int r) {
 		int lenL = m - l + 1;
 		int[] lCopy = Arrays.copyOfRange(permutation, l, m+1);
-		/*for (int i = 0; i < lenL; i++)
-			lCopy[i] = permutation[l + i];*/
-		
 		int lenR = r - m;
 		int[] rCopy = Arrays.copyOfRange(permutation, m+1, r+1);
-		/*for (int i = 0; i < lenR; i++)
-			rCopy[i] = permutation[m + 1 + i];*/
-		
+
 		/* Merge the sorted L and R sub-arrays, counting inversions. */
 		int lIndex = 0, rIndex = 0;
 		int pIndex = l;
@@ -97,7 +92,7 @@ public class MatrixOperations {
 	/* Returns n!. */
 	public static int factorial(int n) {
 		if (n == 1) return 1;
-		else return n * factorial(n-1);
+		return n * factorial(n-1);
 	}
 	
 	/* Given a permutation of p, returns the next lexicographical permutation of the elements
