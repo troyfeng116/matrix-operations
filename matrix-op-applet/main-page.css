@@ -1,6 +1,14 @@
 h1 {
-	
+	color:purple;
 }
+
+/* Styling for width input container. */
+#widthInputContainer {
+	border:1px solid;
+	display:inline-block;
+	padding:10px;
+}
+
 /* Styling for footer container. */
 #footerbox {
 	position:absolute;
