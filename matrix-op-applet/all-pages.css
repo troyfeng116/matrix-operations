@@ -3,18 +3,22 @@ h1 {
 }
 
 /* Menubar styling. */
-#menubarContainer {
-	background-clip:content-box;
-	border:1px solid;
-	background-color:gray;
+#menubarContainer {	
 }
 #menubar {
-	list-style-type:none;
+	list-style:none;
+	float:left;
+	margin:0;
+	width:100%;
+	background-color:gray;
+	padding:0;
 }
 #menubarContainer li {
-	display:inline;
+	float:left;
 }
 #menubarContainer a {
+	display:block;
+	float:left;
 	text-decoration:none;
 	padding:14px 16px;
 	color:black;
@@ -25,7 +29,7 @@ h1 {
 	background-color:green;
 	color:white;
 }
-#menubar .active {
+#menubar a.active {
 	background-color:black;
 	color:white;
 }
