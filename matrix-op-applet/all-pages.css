@@ -1,0 +1,39 @@
+h1 {
+	color:purple;
+}
+
+/* Menubar styling. */
+#menubarContainer {
+	background-clip:content-box;
+	border:1px solid;
+	background-color:gray;
+}
+#menubar {
+	list-style-type:none;
+}
+#menubarContainer li {
+	display:inline;
+}
+#menubarContainer a {
+	text-decoration:none;
+	padding:14px 16px;
+	color:black;
+	background-color:lightgray;
+	text-align:center;
+}
+#menubar a:hover {
+	background-color:green;
+	color:white;
+}
+#menubar .active {
+	background-color:black;
+	color:white;
+}
+
+/* Footer container styling. */
+#footerbox {
+	position:absolute;
+	bottom:10px;
+	margin-left:auto;
+	margin-right:auto;
+}
