@@ -2,42 +2,6 @@ h1 {
 	color:purple;
 }
 
-/* Menubar styling. */
-#menubarContainer {
-	background-clip:content-box;
-	border:1px solid;
-	background-color:gray;
-}
-#menubar {
-	list-style-type:none;
-}
-#menubarContainer li {
-	display:inline;
-}
-#menubarContainer a {
-	text-decoration:none;
-	padding:14px 16px;
-	color:black;
-	background-color:lightgray;
-	text-align:center;
-}
-#menubar a:hover {
-	background-color:green;
-	color:white;
-}
-#menubar .active {
-	background-color:black;
-	color:white;
-}
-
-/* Styling for width input container. */
-#widthInputContainer {
-	border:1px solid;
-	/*display:inline-block;*/
-	display:inline-block;
-	padding:10px;
-}
-
 /* Styling for footer container. */
 #footerbox {
 	position:absolute;
