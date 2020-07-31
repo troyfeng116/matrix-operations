@@ -3,14 +3,15 @@
 	display:inline-block;
 	position:absolute;
 	top:50%;
-	transform:translate(0,-50%);
-	left:10px;
+	left:50%;
+	transform:translate(-50%,-50%);
 	border:1px solid;
 	padding:10px;
 }
 
 /* Style the input grids for each matrix operation */
 #gridContainer {
+	visibility:hidden;
 	border:1px solid;
 	position:absolute;
 	top:60%;
