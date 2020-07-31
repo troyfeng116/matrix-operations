@@ -15,6 +15,10 @@ h1 {
 }
 #menubarContainer li {
 	float:left;
+	border-right:1px solid white;
+}
+#menubarContainer li:last-child {
+	border-right:none;
 }
 #menubarContainer a {
 	display:block;
@@ -24,6 +28,8 @@ h1 {
 	color:black;
 	background-color:lightgray;
 	text-align:center;
+	font-style: bold;
+	font-family: Arial, Helvetica;
 }
 #menubar a:hover {
 	background-color:green;
