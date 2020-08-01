@@ -26,6 +26,10 @@ submitButton.onclick = function() {
 }
 
 calculateButton.onclick = function() {
+	if (!assertMatInput()) {
+		alert("Make sure all entries are filled with integers");
+		return;
+	}
 	outputContainer.style.visibility = "visible";
 }
 
@@ -41,4 +45,8 @@ function generateGrid(n) {
 			grid.appendChild(inputField);
 		}
 	}
+}
+
+function assertMatInput() {
+	return false;
 }
