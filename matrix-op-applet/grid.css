@@ -32,3 +32,14 @@
 	padding:10px;
 	visibility:hidden;
 }
+
+/* Style output container */
+#outputContainer {
+	display:inline-block;
+	position:absolute;
+	left:75%;
+	top:70%;
+	border:1px solid;
+	visibility:hidden;
+	font-size:36px;
+}

@@ -4,6 +4,8 @@ var grid = document.getElementById("gridContainer");
 var widthInputContainer = document.getElementById("widthInputContainer");
 var secondInputContainer = document.getElementById("secondInputContainer");
 var calculateButton = document.getElementById("calculateButton");
+var outputContainer = document.getElementById("outputContainer");
+
 submitButton.onclick = function() {
 	var n = widthReader.value;
 	if (isNaN(n) || n < 1 || n > 8) {
@@ -20,6 +22,11 @@ submitButton.onclick = function() {
 	grid.style.gridTemplateColumns = "repeat("+n+", 1fr)";
 	generateGrid(n);
 	secondInputContainer.style.visibility = "visible";
+	outputContainer.style.visibility = "hidden";
+}
+
+calculateButton.onclick = function() {
+	outputContainer.style.visibility = "visible";
 }
 
 function generateGrid(n) {
