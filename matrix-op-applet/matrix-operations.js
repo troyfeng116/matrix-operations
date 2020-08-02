@@ -32,8 +32,7 @@ calculateButton.onclick = function() {
 		return;
 	}
 	outputContainer.style.visibility = "visible";
-	outputConatiner.innerHTML += outputContainer.innerHTML.slice(0,1);
-	if (outputContainer.innerHTML.slice(0,1) == 'D') outputContainer.innerHTML += "100";
+	if (outputContainer.innerHTML == "DETERMINANT:") outputContainer.innerHTML += "\n"+det();
 }
 
 /* Generate an NxN grid of text fields in grid container. Set id of (i,j)'th element to "ij". */
@@ -63,4 +62,9 @@ function assertMatInput() {
 		}
 	}
 	return true;
+}
+
+/* Given that text fields in grid are all integers, return determinant of matrix in grid. */
+function det() {
+	return "DET";
 }
