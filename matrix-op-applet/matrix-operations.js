@@ -25,14 +25,18 @@ submitButton.onclick = function() {
 	outputContainer.style.visibility = "hidden";
 }
 
+/* When Calculate! button pressed, process inputs and output. */
 calculateButton.onclick = function() {
 	if (!assertMatInput()) {
 		alert("Make sure all entries are filled with integers");
 		return;
 	}
 	outputContainer.style.visibility = "visible";
+	outputConatiner.innerHTML += outputContainer.innerHTML.slice(0,1);
+	if (outputContainer.innerHTML.slice(0,1) == 'D') outputContainer.innerHTML += "100";
 }
 
+/* Generate an NxN grid of text fields in grid container. Set id of (i,j)'th element to "ij". */
 function generateGrid(n) {
 	while (grid.firstChild) {
 		grid.removeChild(grid.firstChild);
@@ -42,11 +46,21 @@ function generateGrid(n) {
 			var inputField = document.createElement("input");
 			inputField.type="text";
 			inputField.size=3;
+			inputField.id=i+""+j;
 			grid.appendChild(inputField);
 		}
 	}
 }
 
+/* Assert that all NxN text fields are populated with integers. */
 function assertMatInput() {
-	return false;
+	var n = widthReader.value;
+	for (var i = 0; i < n; i++) {
+		for (var j = 0; j < n; j++) {
+			if (isNaN(document.getElementById(i+""+j).value) || document.getElementById(i+""+j).value == "") {
+				return false;
+			}
+		}
+	}
+	return true;
 }
