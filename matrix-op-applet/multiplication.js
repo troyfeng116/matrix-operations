@@ -19,11 +19,10 @@ widthSubmitButton.onclick = function() {
 		alert("N must be between 1 and 8");
 		return;
 	}
-	widthInputContainer.style.left = "10px";
-	widthInputContainer.style.top = "30%"
-	widthInputContainer.style.transform = "translate(0,-50%)";
-	outputContainer.style.visibility = "hidden";
-	heightInputContainer.style.visibility = "visible";
+	if (!isNaN(M)) {
+		generateGrids();
+		outputContainer.style.visibility = "hidden";
+	}
 }
 
 heightSubmitButton.onclick = function() {
@@ -32,13 +31,19 @@ heightSubmitButton.onclick = function() {
 		alert("M must be between 1 and 8");
 		return;
 	}
-	heightInputContainer.style.left = "10px";
-	heightInputContainer.style.top = "50%"
-	heightInputContainer.style.transform = "translate(0,-50%)";
-	generateGrids();
+	if (!isNaN(N)) {
+		generateGrids();
+		outputContainer.style.visibility = "hidden";
+	}
 }
 
 function generateGrids() {
+	while (grid1.firstChild) {
+		grid1.removeChild(grid1.firstChild);
+	}
+	while (grid2.firstChild) {
+		grid2.removeChild(grid2.firstChild);
+	}
 	grid1.style.visibility = "visible";
 	grid1.style.width = 48*N+"px";
 	grid1.style.height = 36*M+"px";

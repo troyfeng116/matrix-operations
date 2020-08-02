@@ -1,13 +1,20 @@
-/* Style height input container. */
-#heightInputContainer {
+/* Style the width and height input reader containers */
+.inputContainer {
 	display:inline-block;
-	position:absolute;
-	top:50%;
-	left:50%;
-	transform:translate(-50%,-50%);
 	border:1px solid;
 	padding:10px;
-	visibility:hidden;
+}
+#widthInputContainer {
+	position:absolute;
+	top:30%;
+	left:10px;
+	transform:translate(0,-50%);
+}
+#heightInputContainer {
+	position:absolute;
+	top:50%;
+	left:10px;
+	transform:translate(0,-50%);
 }
 
 /* Style two grid containers. */
