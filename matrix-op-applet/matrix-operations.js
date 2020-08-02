@@ -8,7 +8,7 @@ var outputContainer = document.getElementById("outputContainer");
 
 submitButton.onclick = function() {
 	var n = widthReader.value;
-	if (isNaN(n) || n < 1 || n > 8) {
+	if (isNaN(n) || n < 1 || n > 8 || n%1 != 0) {
 		alert("N must be between 1 and 8");
 		return;
 	}
