@@ -6,7 +6,7 @@ var inputContainer = document.getElementById("inputContainer");
 var secondInputContainer = document.getElementById("secondInputContainer");
 var calculateButton = document.getElementById("calculateButton");
 var outputContainer = document.getElementById("outputContainer");
-var outputPara = document.getElementById("outputPara");
+var outputGrid = document.getElementById("outputGrid");
 var grid1 = document.getElementById("gridContainer1");
 var grid2 = document.getElementById("gridContainer2");
 
@@ -37,15 +37,27 @@ calculateButton.onclick = function() {
 		alert("Make sure all entries are filled with numbers");
 		return;
 	}
-	outputPara.innerHTML = "";
-	outputContainer.style.visibility = "visible";
+	while (outputGrid.firstChild) {
+		outputGrid.removeChild(outputGrid.firstChild);
+	}
+	outputGrid.style.width = (30*M)+"px";
+	outputGrid.style.height = (20*M)+"px";
+	outputGrid.style.gridTemplateRows = "repeat("+M+",1fr)";
+	outputGrid.style.gridTemplateColumns = "repeat("+M+",1fr)";
+	for (var i = 0; i < M; i++) {
+		for (var j = 0; j < M; j++) {
+			var entry = document.createElement("div");
+			entry.id=i+""+j;
+			outputGrid.appendChild(entry);
+		}
+	}
 	var ans = getProduct();
 	for (var i = 0; i < M; i++) {
 		for (var j = 0; j < M; j++) {
-			outputPara.innerHTML += ans[i][j] + "  ";
+			document.getElementById(i+""+j).innerHTML = ans[i][j];
 		}
-		outputPara.innerHTML += "<br>";
 	}
+	outputContainer.style.visibility = "visible";
 }
 
 function generateGrids() {
@@ -56,29 +68,29 @@ function generateGrids() {
 		grid2.removeChild(grid2.firstChild);
 	}
 	grid1.style.visibility = "visible";
-	grid1.style.width = 48*N+"px";
-	grid1.style.height = 36*M+"px";
+	grid1.style.width = (48*N)+"px";
+	grid1.style.height = (36*M)+"px";
 	grid1.style.gridTemplateRows = "repeat("+M+",1fr)";
 	grid1.style.gridTemplateColumns = "repeat("+N+",1fr)";
 	for (var i = 0; i < M; i++) {
 		for (var j = 0; j < N; j++) {
 			var inputBox = document.createElement("input");
 			inputBox.type = "text";
-			inputBox.size = 2;
+			inputBox.size = "3";
 			inputBox.id=i+""+j+"MN";
 			grid1.appendChild(inputBox);
 		}
 	}
 	grid2.style.visibility = "visible";
-	grid2.style.width = 48*M+"px";
-	grid2.style.height = 36*N+"px";
+	grid2.style.width = (48*M)+"px";
+	grid2.style.height = (36*N)+"px";
 	grid2.style.gridTemplateRows = "repeat("+N+",1fr)";
 	grid2.style.gridTemplateColumns = "repeat("+M+",1fr)";
 	for (var i = 0; i < N; i++) {
 		for (var j = 0; j < M; j++) {
 			var inputBox = document.createElement("input");
 			inputBox.type = "text";
-			inputBox.size = 2;
+			inputBox.size = "3";
 			inputBox.id=i+""+j+"NM";
 			grid2.appendChild(inputBox);
 		}

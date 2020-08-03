@@ -10,15 +10,15 @@
 }
 
 /* Style two grid containers. */
-#gridContainer1, #gridContainer2 {
+.gridContainer {
 	visibility:hidden;
 	border:1px solid;
+	border-radius:30px;
 	border-top:none;
 	border-bottom:none;
 	display:grid;
 	padding:30px;
 	grid-gap:10px;
-	border-radius:30px;
 }
 #gridContainer1 {
 	position:absolute;
@@ -55,6 +55,20 @@
 	visibility:hidden;
 	font-size:36px;
 }
-#outputPara {
-	font-size:20px;
+#outputGrid {
+	border:1px solid;
+	border-radius:20px;
+	border-top:none;
+	border-bottom:none;
+	display:grid;
+	padding:20px;
+	grid-gap:10px;
+	align-items:center;
+}
+#outputGrid div {
+	width:24px;
+	height:18px;
+	font-size:15px;
+	text-align:center;
+	border:1px solid;
 }
