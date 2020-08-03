@@ -40,8 +40,8 @@ calculateButton.onclick = function() {
 	while (outputGrid.firstChild) {
 		outputGrid.removeChild(outputGrid.firstChild);
 	}
-	outputGrid.style.width = (30*M)+"px";
-	outputGrid.style.height = (20*M)+"px";
+	outputGrid.style.width = (36*M)+"px";
+	outputGrid.style.height = (30*M)+"px";
 	outputGrid.style.gridTemplateRows = "repeat("+M+",1fr)";
 	outputGrid.style.gridTemplateColumns = "repeat("+M+",1fr)";
 	for (var i = 0; i < M; i++) {
