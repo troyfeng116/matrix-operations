@@ -19,9 +19,10 @@ widthSubmitButton.onclick = function() {
 		alert("N must be between 1 and 8");
 		return;
 	}
-	if (!isNaN(M)) {
+	if (!isNaN(M) && M != undefined) {
 		generateGrids();
 		outputContainer.style.visibility = "hidden";
+		secondInputContainer.style.visibility = "visible";
 	}
 }
 
@@ -31,9 +32,24 @@ heightSubmitButton.onclick = function() {
 		alert("M must be between 1 and 8");
 		return;
 	}
-	if (!isNaN(N)) {
+	if (!isNaN(N) && N != undefined) {
 		generateGrids();
 		outputContainer.style.visibility = "hidden";
+		secondInputContainer.style.visibility = "visible";
+	}
+}
+
+calculateButton.onclick = function() {
+	if (!assertInputs()) {
+		alert("Make sure all entries are filled with numbers");
+		return;
+	}
+	outputContainer.style.visibility = "visible";
+	var ans = getProduct();
+	for (var i = 0; i < M; i++) {
+		for (var i = 0; i < M; i++) {
+			outputContainer.innerHTML += ans[i][i];
+		}
 	}
 }
 
@@ -72,5 +88,39 @@ function generateGrids() {
 			grid2.appendChild(inputBox);
 		}
 	}
+}
+
+function assertInputs() {
+	for (var i = 0; i < N; i++) {
+		for (var j = 0; j < M; j++) {
+			var x = document.getElementById(i+""+j+"MN").value;
+			if (isNaN(x) || x == "") {
+				return false;
+			}
+			var y = document.getElementById(j+""+i+"NM").value;
+			if (isNaN(y) || y == "") {
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+function getProduct() {
+	var ans = [];
+	for (var i = 0; i < M; i++) {
+		var row = [];
+		for (var j = 0; j < M; j++) {
+			var sum = 0;
+			for (var z = 0; z < N; z++) {
+				var x = document.getElementById(i+""+z+"MN").value;
+				var y = document.getElementById(z+""+j+"NM").value;
+				ans += x*y;
+			}
+			row.push(sum);
+		}
+		ans.push(row);
+	}
+	return ans;
 }
 
