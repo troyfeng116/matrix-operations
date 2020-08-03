@@ -1,9 +1,8 @@
 var widthReader = document.getElementById("widthReader");
-var widthSubmitButton = document.getElementById("submitButton");
-var widthInputContainer = document.getElementById("widthInputContainer");
+var submitButton = document.getElementById("submitButton");
 var heightReader = document.getElementById("heightReader");
 var heightSubmitButton = document.getElementById("submitHeight");
-var heightInputContainer = document.getElementById("heightInputContainer");
+var inputContainer = document.getElementById("inputContainer");
 var secondInputContainer = document.getElementById("secondInputContainer");
 var calculateButton = document.getElementById("calculateButton");
 var outputContainer = document.getElementById("outputContainer");
@@ -14,30 +13,23 @@ var grid2 = document.getElementById("gridContainer2");
 var N;
 var M;
 
-widthSubmitButton.onclick = function() {
+submitButton.onclick = function() {
 	N = widthReader.value;
 	if (isNaN(N) || N < 1 || N > 8 || N%1 != 0) {
 		alert("N must be between 1 and 8");
 		return;
 	}
-	if (!isNaN(M) && M != undefined) {
-		generateGrids();
-		outputContainer.style.visibility = "hidden";
-		secondInputContainer.style.visibility = "visible";
-	}
-}
-
-heightSubmitButton.onclick = function() {
 	M = heightReader.value;
 	if (isNaN(M) || M < 1 || M > 8 || M%1 != 0) {
 		alert("M must be between 1 and 8");
 		return;
 	}
-	if (!isNaN(N) && N != undefined) {
-		generateGrids();
-		outputContainer.style.visibility = "hidden";
-		secondInputContainer.style.visibility = "visible";
-	}
+	inputContainer.style.top = "50%";
+	inputContainer.style.left = "10px";
+	inputContainer.style.transform = "translate(0,-50%)";
+	generateGrids();
+	outputContainer.style.visibility = "hidden";
+	secondInputContainer.style.visibility = "visible";
 }
 
 calculateButton.onclick = function() {

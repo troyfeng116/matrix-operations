@@ -1,20 +1,12 @@
-/* Style the width and height input reader containers */
-.inputContainer {
+/* Style the width + height input reader container */
+#inputContainer {
 	display:inline-block;
 	border:1px solid;
 	padding:10px;
-}
-#widthInputContainer {
-	position:absolute;
-	top:30%;
-	left:10px;
-	transform:translate(0,-50%);
-}
-#heightInputContainer {
 	position:absolute;
 	top:50%;
-	left:10px;
-	transform:translate(0,-50%);
+	left:50%;
+	transform:translate(-50%,-50%);
 }
 
 /* Style two grid containers. */
@@ -39,6 +31,17 @@
 	top:60%;
 	left:60%;
 	transform:translate(-50%,-50%);
+}
+
+/* Style second input prompt container */ 
+#secondInputContainer {
+	display:inline-block;
+	position:absolute;
+	left:75%;
+	top:30%;
+	border:1px solid;
+	padding:10px;
+	visibility:hidden;
 }
 
 /* Style output container. */
