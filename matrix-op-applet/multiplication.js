@@ -7,6 +7,7 @@ var heightInputContainer = document.getElementById("heightInputContainer");
 var secondInputContainer = document.getElementById("secondInputContainer");
 var calculateButton = document.getElementById("calculateButton");
 var outputContainer = document.getElementById("outputContainer");
+var outputPara = document.getElementById("outputPara");
 var grid1 = document.getElementById("gridContainer1");
 var grid2 = document.getElementById("gridContainer2");
 
@@ -44,12 +45,14 @@ calculateButton.onclick = function() {
 		alert("Make sure all entries are filled with numbers");
 		return;
 	}
+	outputPara.innerHTML = "";
 	outputContainer.style.visibility = "visible";
 	var ans = getProduct();
 	for (var i = 0; i < M; i++) {
-		for (var i = 0; i < M; i++) {
-			outputContainer.innerHTML += ans[i][i];
+		for (var j = 0; j < M; j++) {
+			outputPara.innerHTML += ans[i][j] + "  ";
 		}
+		outputPara.innerHTML += "<br>";
 	}
 }
 
@@ -91,8 +94,8 @@ function generateGrids() {
 }
 
 function assertInputs() {
-	for (var i = 0; i < N; i++) {
-		for (var j = 0; j < M; j++) {
+	for (var i = 0; i < M; i++) {
+		for (var j = 0; j < N; j++) {
 			var x = document.getElementById(i+""+j+"MN").value;
 			if (isNaN(x) || x == "") {
 				return false;
@@ -115,7 +118,7 @@ function getProduct() {
 			for (var z = 0; z < N; z++) {
 				var x = document.getElementById(i+""+z+"MN").value;
 				var y = document.getElementById(z+""+j+"NM").value;
-				ans += x*y;
+				sum += x*y;
 			}
 			row.push(sum);
 		}
