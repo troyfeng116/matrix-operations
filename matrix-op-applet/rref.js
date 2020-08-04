@@ -55,7 +55,7 @@ calculateButton.onclick = function() {
 	var ans = getRref();
 	for (var i = 0; i < M; i++) {
 		for (var j = 0; j < N; j++) {
-			document.getElementById(i+""+j+"O").innerHTML = ans[i][j];
+			document.getElementById(i+""+j+"O").innerHTML = ans[i][j].toString();
 		}
 	}
 	outputContainer.style.visibility = "visible";
