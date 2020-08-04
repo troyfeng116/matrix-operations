@@ -9,6 +9,33 @@
 	transform:translate(-50%,-50%);
 }
 
+/* Style instructions */
+#insHover {
+	display:inline-block;
+	font-size:14px;
+	border:1px solid;
+	padding:10px;
+	position:absolute;
+	top:80%;
+	left:10px;
+	transform:translate(0,-50%);
+}
+#instructionsContainer {
+	background-color:black;
+	color:white;
+	display:none;
+	border:1px solid;
+	padding:10px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	z-index:1;
+}
+#insHover:hover + #instructionsContainer {
+	display:inline-block;
+}
+
 /* Style two grid containers. */
 .gridContainer {
 	visibility:hidden;
@@ -17,7 +44,7 @@
 	border-top:none;
 	border-bottom:none;
 	display:grid;
-	padding:30px;
+	padding:20px;
 	grid-gap:10px;
 }
 #gridContainer1 {
@@ -31,6 +58,7 @@
 	top:60%;
 	left:60%;
 	transform:translate(-50%,-50%);
+	float:left;
 }
 
 /* Style second input prompt container */ 

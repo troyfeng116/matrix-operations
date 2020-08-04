@@ -24,7 +24,7 @@ submitButton.onclick = function() {
 		alert("M must be between 1 and 8");
 		return;
 	}
-	inputContainer.style.top = "50%";
+	inputContainer.style.top = "40%";
 	inputContainer.style.left = "10px";
 	inputContainer.style.transform = "translate(0,-50%)";
 	generateGrids();
