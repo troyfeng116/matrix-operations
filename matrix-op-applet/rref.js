@@ -170,3 +170,45 @@ function moveZeroRowsToBottom(mat, start, j) {
 	return count;
 }
 
+
+/* Class definition for Fraction objects. */
+class Fraction {
+	constructor(numerator,denominator) {
+		this.numerator = numerator;
+		this.denominator = denominator;
+	}
+	myToString() {
+		if (this.numerator % this.denominator == 0) return this.numerator/this.denominator;
+		return this.numerator + "/" + this.denominator;
+	}
+	simplify() {
+		var g = gcd(Math.abs(this.numerator),Math.abs(this.denominator));
+		console.log(g);
+		this.numerator /= g;
+		this.denominator /= g;
+	}
+	reciprocal() {
+		var temp = this.numerator;
+		this.numerator = this.denominator;
+		this.denominator = temp;
+	}
+	multiply(f) {
+		const ans = new Fraction(this.numerator*f.numerator, this.denominator*f.denominator)
+		ans.simplify();
+		return ans;
+	}
+	add(f) {
+		var newNum = this.numerator*f.denominator + this.denominator*f.numerator;
+		var newDen = this.denominator * f.denominator;
+		const ans = new Fraction(newNum,newDen);
+		ans.simplify();
+		return ans;
+	}
+}
+
+function gcd(a,b) {
+	if (a == 0) return b;
+	if (b == 0) return a;
+	return gcd(b,a%b);
+}
+
