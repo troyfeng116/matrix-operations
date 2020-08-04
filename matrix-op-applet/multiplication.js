@@ -1,7 +1,6 @@
 var widthReader = document.getElementById("widthReader");
 var submitButton = document.getElementById("submitButton");
 var heightReader = document.getElementById("heightReader");
-var heightSubmitButton = document.getElementById("submitHeight");
 var inputContainer = document.getElementById("inputContainer");
 var secondInputContainer = document.getElementById("secondInputContainer");
 var calculateButton = document.getElementById("calculateButton");
