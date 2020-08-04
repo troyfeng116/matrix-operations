@@ -17,7 +17,7 @@ submitButton.onclick = function() {
 	widthInputContainer.style.left = "10px";
 	widthInputContainer.style.top = "30%"
 	widthInputContainer.style.transform = "translate(0,-50%)";
-	generateGrid(n);
+	generateGrid();
 	secondInputContainer.style.visibility = "visible";
 	outputContainer.style.visibility = "hidden";
 }
@@ -33,7 +33,7 @@ calculateButton.onclick = function() {
 }
 
 /* Generate an NxN grid of text fields in grid container. Set id of (i,j)'th element to "ij". */
-function generateGrid(n) {
+function generateGrid() {
 	while (grid.firstChild) {
 		grid.removeChild(grid.firstChild);
 	}
