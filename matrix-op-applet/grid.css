@@ -9,6 +9,34 @@
 	padding:10px;
 }
 
+/* Style instructions (set visible on hover) */
+#insHover {
+	display:inline-block;
+	font-size:14px;
+	border:1px solid;
+	padding:10px;
+	position:absolute;
+	top:80%;
+	left:10px;
+	transform:translate(0,-50%);
+}
+#instructionsContainer {
+	background-color:black;
+	color:white;
+	display:none;
+	border:1px solid;
+	padding:10px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	z-index:1;
+}
+#insHover:hover + #instructionsContainer {
+	display:inline-block;
+}
+
+
 /* Style the input grids for each matrix operation */
 #gridContainer {
 	visibility:hidden;
