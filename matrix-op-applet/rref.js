@@ -9,19 +9,20 @@ var secondInputContainer = document.getElementById("secondInputContainer");
 var calculateButton = document.getElementById("calculateButton");
 
 var outputContainer = document.getElementById("outputContainer");
+var outputGrid = document.getElementById("outputGrid");
 
-var N;
 var M;
+var N;
 
 submitButton.onclick = function() {
-	N = widthReader.value;
-	if (isNaN(N) || N < 1 || N > 8 || N%1 != 0) {
-		alert("N must be between 1 and 8");
-		return;
-	}
 	M = heightReader.value;
 	if (isNaN(M) || M < 1 || M > 8 || M%1 != 0) {
 		alert("M must be between 1 and 8");
+		return;
+	}
+	N = widthReader.value;
+	if (isNaN(N) || N < 1 || N > 8 || N%1 != 0) {
+		alert("N must be between 1 and 8");
 		return;
 	}
 	inputContainer.style.top = "40%";
@@ -36,6 +37,26 @@ calculateButton.onclick = function() {
 	if (!assertInputs()) {
 		alert("Make sure all entries are filled with numbers");
 		return;
+	}
+	while (outputGrid.firstChild) {
+		outputGrid.removeChild(outputGrid.firstChild);
+	}
+	outputGrid.style.width = (60*M)+"px";
+	outputGrid.style.height = (36*M)+"px";
+	outputGrid.style.gridTemplateRows = "repeat("+M+",1fr)";
+	outputGrid.style.gridTemplateColumns = "repeat("+N+",1fr)";
+	for (var i = 0; i < M; i++) {
+		for (var j = 0; j < M; j++) {
+			var entry = document.createElement("div");
+			entry.id=i+""+j+"O";
+			outputGrid.appendChild(entry);
+		}
+	}
+	var ans = getRref();
+	for (var i = 0; i < M; i++) {
+		for (var j = 0; j < N; j++) {
+			document.getElementById(i+""+j+"O").innerHTML = ans[i][j];
+		}
 	}
 	outputContainer.style.visibility = "visible";
 }
@@ -71,4 +92,18 @@ function assertInputs() {
 	}
 	return true;
 }
+
+/* Return MxN matrix corresponding to rref of input. */
+function getRref() {
+	var ans = [];
+	for (var i = 0; i < M; i++) {
+		var row = [];
+		for (var j = 0; j < N; j++) {
+			row.push(document.getElementById(i+""+j).value);
+		}
+		ans.push(row);
+	}
+	return ans;
+}
+
 
