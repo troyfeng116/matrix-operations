@@ -46,7 +46,7 @@ calculateButton.onclick = function() {
 	outputGrid.style.gridTemplateRows = "repeat("+M+",1fr)";
 	outputGrid.style.gridTemplateColumns = "repeat("+N+",1fr)";
 	for (var i = 0; i < M; i++) {
-		for (var j = 0; j < M; j++) {
+		for (var j = 0; j < N; j++) {
 			var entry = document.createElement("div");
 			entry.id=i+""+j+"O";
 			outputGrid.appendChild(entry);
@@ -99,11 +99,74 @@ function getRref() {
 	for (var i = 0; i < M; i++) {
 		var row = [];
 		for (var j = 0; j < N; j++) {
-			row.push(document.getElementById(i+""+j).value);
+			row.push(parseInt(document.getElementById(i+""+j).value));
 		}
 		ans.push(row);
 	}
+	rref(ans);
 	return ans;
 }
 
+/* Given MxN array, convert to rref form. */
+function rref(mat) {
+	var pivotCol = 0;
+	var pivotRow = 0;
+	while (pivotCol < N && pivotRow < M) {
+		var count = moveZeroRowsToBottom(mat, pivotRow, pivotCol);
+		if (count == 0) {
+			pivotCol++;
+			continue;
+		}
+		var c = 1/(mat[pivotRow][pivotCol]);
+		multRow(mat, pivotRow, c);
+		for (var row = 0; row < M; row++) {
+			if (row == pivotRow) ;
+			else if (mat[row][pivotCol] != 0) {
+				c = -(mat[row][pivotCol]);
+				addRows(mat, c, pivotRow, row);
+			}
+		}
+		if (pivotRow < M) pivotRow++;
+		pivotCol++;
+	}
+}
+
+/* Swap i and j rows of mat. */
+function swapRows(mat, i, j) {
+	var temp = mat[i];
+	mat[i] = mat[j];
+	mat[j] = temp;
+}
+
+/* Mutiply row i by c. */
+function multRow(mat, i, c) {
+	for (var j = 0; j < N; j++) {
+		mat[i][j] *= c;
+		if (mat[i][j] == -0) mat[i][j] = 0;
+	}
+}
+
+/* Add c * row i to row j. */
+function addRows(mat, c, i, j) {
+	for (var col = 0; col < N; col++) {
+		mat[j][col] += c*mat[i][col];
+	}
+}
+
+/* Move all rows below and including start with a zero in column j to the bottom of mat. Return 
+#rows with non-zero entry at col j. */
+function moveZeroRowsToBottom(mat, start, j) {
+	var count = 0;
+	var top = start;
+	var bottom = M;
+	while (top < bottom) {
+		if (mat[top][j] == 0) {
+			swapRows(mat, top, bottom-1);
+			bottom--;
+		}
+		else count++;
+		top++;
+	}
+	return count;
+}
 
