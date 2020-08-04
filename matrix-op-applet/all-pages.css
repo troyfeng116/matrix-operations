@@ -1,10 +1,5 @@
-h1 {
-	color:purple;
-}
 
 /* Menubar styling. */
-#menubarContainer {	
-}
 #menubar {
 	list-style:none;
 	float:left;
@@ -32,7 +27,7 @@ h1 {
 	font-family: Arial, Helvetica;
 }
 #menubar a:hover {
-	background-color:green;
+	background-color:gray;
 	color:white;
 }
 #menubar a.active {
