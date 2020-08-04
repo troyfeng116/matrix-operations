@@ -31,10 +31,8 @@ calculateButton.onclick = function() {
 		alert("Make sure all entries are filled with integers");
 		return;
 	}
+	outputContainer.innerHTML = "DETERMINANT: <br>" + calculateDeterminant();
 	outputContainer.style.visibility = "visible";
-	if (outputContainer.innerHTML.substring(0,1) == "D") {
-		outputContainer.innerHTML = "DETERMINANT: <br>" + calculateDeterminant();
-	}
 }
 
 /* Generate an NxN grid of text fields in grid container. Set id of (i,j)'th element to "ij". */
