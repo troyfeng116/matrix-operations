@@ -6,8 +6,10 @@ var secondInputContainer = document.getElementById("secondInputContainer");
 var calculateButton = document.getElementById("calculateButton");
 var outputContainer = document.getElementById("outputContainer");
 
+var n;
+
 submitButton.onclick = function() {
-	var n = widthReader.value;
+	n = widthReader.value;
 	if (isNaN(n) || n < 1 || n > 8 || n%1 != 0) {
 		alert("N must be between 1 and 8");
 		return;
@@ -15,11 +17,6 @@ submitButton.onclick = function() {
 	widthInputContainer.style.left = "10px";
 	widthInputContainer.style.top = "30%"
 	widthInputContainer.style.transform = "translate(0,-50%)";
-	grid.style.visibility = "visible";
-	grid.style.height = (48*n)+"px";
-	grid.style.width = (60*n)+"px";
-	grid.style.gridTemplateRows = "repeat("+n+", 1fr)";
-	grid.style.gridTemplateColumns = "repeat("+n+", 1fr)";
 	generateGrid(n);
 	secondInputContainer.style.visibility = "visible";
 	outputContainer.style.visibility = "hidden";
@@ -40,6 +37,10 @@ function generateGrid(n) {
 	while (grid.firstChild) {
 		grid.removeChild(grid.firstChild);
 	}
+	grid.style.height = (48*n)+"px";
+	grid.style.width = (60*n)+"px";
+	grid.style.gridTemplateRows = "repeat("+n+", 1fr)";
+	grid.style.gridTemplateColumns = "repeat("+n+", 1fr)";
 	for (var i = 0; i < n; i++) {
 		for (var j = 0; j < n; j++) {
 			var inputField = document.createElement("input");
@@ -49,12 +50,11 @@ function generateGrid(n) {
 			grid.appendChild(inputField);
 		}
 	}
+	grid.style.visibility = "visible";
 }
 
 /* Assert that all NxN text fields are populated with integers. */
 function assertMatInput() {
-	var n = 0;
-	while (document.getElementById(n+""+n)) n++;
 	for (var i = 0; i < n; i++) {
 		for (var j = 0; j < n; j++) {
 			if (isNaN(document.getElementById(i+""+j).value) || document.getElementById(i+""+j).value == "") {
@@ -67,8 +67,6 @@ function assertMatInput() {
 
 /* Given that text fields in grid are all integers, retrieve inputs and place into NxN array, call det(). */
 function calculateDeterminant() {
-	var n = 0;
-	while (document.getElementById(n+""+n)) n++;
 	var arr = [];
 	for (var i = 0; i < n; i++) {
 		var row = [];
