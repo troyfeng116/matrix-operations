@@ -15,6 +15,11 @@ var M;
 var N;
 
 submitButton.onclick = function() {
+	N = widthReader.value;
+	if (isNaN(N) || N < 1 || N > 8 || N%1 != 0) {
+		alert("N must be between 1 and 8");
+		return;
+	}
 	if (heightReader) {
 		M = heightReader.value;
 		if (isNaN(M) || M < 1 || M > 8 || M%1 != 0) {
@@ -22,11 +27,7 @@ submitButton.onclick = function() {
 			return;
 		}
 	}
-	N = widthReader.value;
-	if (isNaN(N) || N < 1 || N > 8 || N%1 != 0) {
-		alert("N must be between 1 and 8");
-		return;
-	}
+	else M = N;
 	inputContainer.style.top = "40%";
 	inputContainer.style.left = "10px";
 	inputContainer.style.transform = "translate(0,-50%)";
@@ -43,6 +44,7 @@ calculateButton.onclick = function() {
 	while (outputGrid.firstChild) {
 		outputGrid.removeChild(outputGrid.firstChild);
 	}
+	outputGrid.style.display = "grid";
 	outputGrid.style.height = (36*M)+"px";
 	outputGrid.style.width = (60*N)+"px";
 	outputGrid.style.gridTemplateRows = "repeat("+M+",1fr)";
@@ -54,10 +56,27 @@ calculateButton.onclick = function() {
 			outputGrid.appendChild(entry);
 		}
 	}
-	var ans = getRref();
-	for (var i = 0; i < M; i++) {
-		for (var j = 0; j < N; j++) {
-			document.getElementById(i+""+j+"O").innerHTML = ans[i][j].myToString();
+	if (heightReader) {
+		var ans = getRref();
+		for (var i = 0; i < M; i++) {
+			for (var j = 0; j < N; j++) {
+				document.getElementById(i+""+j+"O").innerHTML = ans[i][j].myToString();
+			}
+		}
+	}
+	else {
+		var ans = getInverse();
+		if (ans == "NONE") {
+			outputGrid.style.display = "none";
+			outputContainer.innerHTML = "INVERSE: NONE";
+			return;
+		}
+		else {
+			for (var i = 0; i < N; i++) {
+				for (var j = 0; j < N; j++) {
+					document.getElementById(i+""+j+"O").innerHTML = ans[i][j].myToString();
+				}
+			}
 		}
 	}
 	outputContainer.style.visibility = "visible";
@@ -111,6 +130,7 @@ function getRref() {
 
 /* Given MxN array of Fractions, convert to rref form. */
 function rref(mat) {
+	if (!heightReader) N *= 2;
 	var pivotCol = 0;
 	var pivotRow = 0;
 	while (pivotCol < N && pivotRow < M) {
@@ -131,6 +151,7 @@ function rref(mat) {
 		if (pivotRow < M) pivotRow++;
 		pivotCol++;
 	}
+	if (!heightReader) N /= 2;
 }
 
 /* Swap i and j rows of mat. */
@@ -169,6 +190,63 @@ function moveZeroRowsToBottom(mat, start, j) {
 		top++;
 	}
 	return count;
+}
+
+/* Return NxN Fraction matrix corresponding to inverse of NxN input. */
+function getInverse() {
+	var mat = [];
+	for (var i = 0; i < N; i++) {
+		var row = [];
+		for (var j = 0; j < N; j++) {
+			row.push(parseInt(document.getElementById(i+""+j).value));
+		}
+		mat.push(row);
+	}
+	if (det(mat) == 0) return "NONE";
+	for (var i = 0; i < N; i++) {
+		for (var j = 0; j < N; j++) {
+			mat[i][j] = new Fraction(mat[i][j], 1);
+			if (i == j) mat[i].push(new Fraction(1,1));
+			else mat[i].push(new Fraction(0,1));
+		}
+	}
+	rref(mat);
+	var ans = [];
+	for (var i = 0; i < N; i++) {
+		var row = [];
+		for (var j = 0; j < N; j++) {
+			row.push(mat[i][N+j]);
+		}
+		ans.push(row);
+	}
+	return ans;
+}
+
+/* Recursive determinant calculation function. */
+function det(arr) {
+	var n = arr.length;
+	if (n == 1) return arr[0][0];
+	var ans = 0;
+	for (var j = 0; j < n; j++) {
+		if (j%2 == 0) ans += arr[0][j] * det(subArr(arr,j));
+		else ans -= arr[0][j] * det(subArr(arr,j));
+	}
+	return ans;
+}
+
+/* Given NxN array, return (N-1)x(N-1) array corresponding to removing 0th row and j'th column. */
+function subArr(arr,j) {
+	var n = arr.length;
+	var ans = [];
+	for (var r = 1; r < n; r++) {
+		var row = [];
+		for (var c = 0; c < n; c++) {
+			if (c == j) continue;
+			row.push(arr[r][c]);
+		}
+		ans.push(row);
+	}
+	return ans;
 }
 
 /* Class definition for Fraction objects. */
