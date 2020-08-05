@@ -1,42 +1,4 @@
-/* Style the width + height input reader container */
-#inputContainer {
-	display:inline-block;
-	border:1px solid;
-	padding:10px;
-	position:absolute;
-	top:50%;
-	left:50%;
-	transform:translate(-50%,-50%);
-}
-
-/* Style instructions */
-#insHover {
-	display:inline-block;
-	font-size:14px;
-	border:1px solid;
-	padding:10px;
-	position:absolute;
-	top:80%;
-	left:10px;
-	transform:translate(0,-50%);
-}
-#instructionsContainer {
-	background-color:black;
-	color:white;
-	display:none;
-	border:1px solid;
-	padding:10px;
-	position:absolute;
-	top:50%;
-	left:50%;
-	transform:translate(-50%,-50%);
-	z-index:1;
-}
-#insHover:hover + #instructionsContainer {
-	display:inline-block;
-}
-
-/* Style two grid containers. */
+/* Style the two grid containers. */
 .gridContainer {
 	visibility:hidden;
 	border:1px solid;
@@ -59,41 +21,4 @@
 	left:60%;
 	transform:translate(-50%,-50%);
 	float:left;
-}
-
-/* Style second input prompt container */ 
-#secondInputContainer {
-	display:inline-block;
-	position:absolute;
-	left:75%;
-	top:30%;
-	border:1px solid;
-	padding:10px;
-	visibility:hidden;
-}
-
-/* Style output container. */
-#outputContainer {
-	display:inline-block;
-	position:absolute;
-	left:75%;
-	top:50%;
-	border:1px solid;
-	padding:10px;
-	visibility:hidden;
-	font-size:28px;
-}
-#outputGrid {
-	border:1px solid;
-	border-radius:15px;
-	border-top:none;
-	border-bottom:none;
-	display:grid;
-	grid-gap:10px;
-	padding:10px;
-}
-#outputGrid div {
-	padding:3px 0;
-	font-size:16px;
-	text-align:center;
 }
