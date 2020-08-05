@@ -62,6 +62,9 @@ body div {
 	background-color:gray;
 	color:gold;
 }
+#menubar li:last-child {
+	border-bottom: 1px solid black;
+}
 
 /* Footer container styling. */
 #footerbox {
