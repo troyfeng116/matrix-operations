@@ -2,7 +2,10 @@
 body {
 	background-color:white;
 	/*background: linear-gradient(270deg, rgb(110,110,110) 2%, rgb(50,50,50) 98%);*/
-	color:black;
+}
+body div {
+	background-color:gray;
+	color:gold;
 }
 #heading {
 	position:absolute;
@@ -28,7 +31,7 @@ body {
 	background-color:gray;
 	padding:0;
 	border-right:1px solid black;
-	height:100%;
+	height:135%;
 }
 #menubarContainer li {
 	border-top:1px solid black;

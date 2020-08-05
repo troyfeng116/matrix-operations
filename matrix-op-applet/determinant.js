@@ -14,7 +14,7 @@ submitButton.onclick = function() {
 		alert("N must be between 1 and 8");
 		return;
 	}
-	inputContainer.style.left = "75%";
+	inputContainer.style.left = "65%";
 	inputContainer.style.top = "40%"
 	inputContainer.style.transform = "translate(0,-50%)";
 	generateGrid();

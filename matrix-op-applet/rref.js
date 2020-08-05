@@ -30,7 +30,7 @@ submitButton.onclick = function() {
 	}
 	else M = N;
 	inputContainer.style.top = "40%";
-	inputContainer.style.left = "75%";
+	inputContainer.style.left = "65%";
 	inputContainer.style.transform = "translate(0,-50%)";
 	generateGrid();
 	outputContainer.style.visibility = "hidden";
