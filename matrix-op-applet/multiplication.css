@@ -1,13 +1,14 @@
 /* Style the two grid containers. */
 .gridContainer {
 	visibility:hidden;
-	border:1px solid;
+	border:1px solid black;
 	border-radius:30px;
 	border-top:none;
 	border-bottom:none;
 	display:grid;
 	padding:20px;
 	grid-gap:10px;
+	background-color:white;
 }
 #gridContainer1 {
 	position:absolute;
@@ -21,4 +22,9 @@
 	left:60%;
 	transform:translate(-50%,-50%);
 	float:left;
+}
+
+/* Position second input container properly. */
+#secondInputContainer {
+	left:75%;
 }

@@ -12,7 +12,7 @@ body div {
 	top:0;
 	left:0;
 	background-color:gray;
-	color:rgb(240,220,0);
+	color:gold;
 	width:100%;
 }
 #heading h1 {
@@ -51,7 +51,7 @@ body div {
 }
 #menubar a:hover {
 	background-color:gray;
-	color:rgb(240,220,0);
+	color:gold;
 }
 #menubar a.active {
 	width:220px;
@@ -60,7 +60,7 @@ body div {
 	border-right:1px solid black;
 	text-size:100px;
 	background-color:gray;
-	color:rgb(240,220,0);
+	color:gold;
 }
 
 /* Footer container styling. */
