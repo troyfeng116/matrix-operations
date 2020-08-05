@@ -67,9 +67,15 @@ calculateButton.onclick = function() {
 	else {
 		var ans = getInverse();
 		if (ans == "NONE") {
-			outputGrid.style.display = "none";
-			outputContainer.innerHTML = "INVERSE: NONE";
-			return;
+			while (outputGrid.firstChild) {
+				outputGrid.removeChild(outputGrid.firstChild);
+			}
+			outputGrid.style.display = "inline-block";
+			outputGrid.style.height = (36)+"px";
+			outputGrid.style.width = (60)+"px";
+			var entry = document.createElement("div");
+			entry.innerHTML = "NONE";
+			outputGrid.appendChild(entry);
 		}
 		else {
 			for (var i = 0; i < N; i++) {
@@ -181,13 +187,16 @@ function moveZeroRowsToBottom(mat, start, j) {
 	var count = 0;
 	var top = start;
 	var bottom = M;
-	while (top < bottom) {
-		if (mat[top][j].numerator == 0) {
-			swapRows(mat, top, bottom-1);
+	var i = start;
+	while (i < bottom) {
+		if (mat[i][j].numerator == 0) {
+			swapRows(mat, i, bottom-1);
 			bottom--;
 		}
-		else count++;
-		top++;
+		else {
+			count++;
+			i++;
+		}
 	}
 	return count;
 }
