@@ -16,13 +16,13 @@
 	border:1px solid;
 	padding:10px;
 	position:absolute;
-	top:80%;
-	left:10px;
+	top:90%;
+	right:10px;
 	transform:translate(0,-50%);
 }
 #instructionsContainer {
 	background-color:black;
-	color:white;
+	color:rgb(240,220,0);
 	display:none;
 	border:1px solid;
 	padding:10px;
