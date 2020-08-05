@@ -15,10 +15,12 @@ var M;
 var N;
 
 submitButton.onclick = function() {
-	M = heightReader.value;
-	if (isNaN(M) || M < 1 || M > 8 || M%1 != 0) {
-		alert("M must be between 1 and 8");
-		return;
+	if (heightReader) {
+		M = heightReader.value;
+		if (isNaN(M) || M < 1 || M > 8 || M%1 != 0) {
+			alert("M must be between 1 and 8");
+			return;
+		}
 	}
 	N = widthReader.value;
 	if (isNaN(N) || N < 1 || N > 8 || N%1 != 0) {
@@ -35,14 +37,14 @@ submitButton.onclick = function() {
 
 calculateButton.onclick = function() {
 	if (!assertInputs()) {
-		alert("Make sure all entries are filled with numbers");
+		alert("Make sure all entries are filled with integers");
 		return;
 	}
 	while (outputGrid.firstChild) {
 		outputGrid.removeChild(outputGrid.firstChild);
 	}
-	outputGrid.style.width = (60*M)+"px";
 	outputGrid.style.height = (36*M)+"px";
+	outputGrid.style.width = (60*N)+"px";
 	outputGrid.style.gridTemplateRows = "repeat("+M+",1fr)";
 	outputGrid.style.gridTemplateColumns = "repeat("+N+",1fr)";
 	for (var i = 0; i < M; i++) {
@@ -87,13 +89,13 @@ function assertInputs() {
 	for (var i = 0; i < M; i++) {
 		for (var j = 0; j < N; j++) {
 			var x = document.getElementById(i+""+j).value;
-			if (isNaN(x) || x=="") return false;
+			if (isNaN(x) || x=="" || x%1 != 0) return false;
 		}
 	}
 	return true;
 }
 
-/* Return MxN matrix corresponding to rref of input. */
+/* Return MxN Fraction matrix corresponding to rref of input. */
 function getRref() {
 	var ans = [];
 	for (var i = 0; i < M; i++) {
@@ -107,7 +109,7 @@ function getRref() {
 	return ans;
 }
 
-/* Given MxN array, convert to rref form. */
+/* Given MxN array of Fractions, convert to rref form. */
 function rref(mat) {
 	var pivotCol = 0;
 	var pivotRow = 0;
@@ -138,15 +140,14 @@ function swapRows(mat, i, j) {
 	mat[j] = temp;
 }
 
-/* Mutiply row i by c. */
+/* Mutiply row i by Fraction c. */
 function multRow(mat, i, c) {
 	for (var j = 0; j < N; j++) {
 		mat[i][j] = mat[i][j].multiply(c);
-		//if (mat[i][j] == -0) mat[i][j] = 0;
 	}
 }
 
-/* Add c * row i to row j. */
+/* Add c times row i to row j. */
 function addRows(mat, c, i, j) {
 	for (var col = 0; col < N; col++) {
 		mat[j][col] = mat[j][col].add(mat[i][col].multiply(c));
@@ -169,7 +170,6 @@ function moveZeroRowsToBottom(mat, start, j) {
 	}
 	return count;
 }
-
 
 /* Class definition for Fraction objects. */
 class Fraction {
