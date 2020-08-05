@@ -84,8 +84,8 @@ function generateGrid() {
 	while (grid.firstChild) {
 		grid.removeChild(grid.firstChild);
 	}
-	grid.style.height=(36*M)+"px";
-	grid.style.width=(48*N)+"px";
+	grid.style.height = (N<=4 && M<=4) ? (48*M)+"px" : (36*M)+"px";
+	grid.style.width = (N<=4 && M<=4) ? (60*N)+"px" : (48*N)+"px";
 	grid.style.gridTemplateRows = "repeat("+M+",1fr)";
 	grid.style.gridTemplateColumns = "repeat("+N+",1fr)";
 	for (var i = 0; i < M; i++) {
