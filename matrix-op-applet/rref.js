@@ -1,5 +1,6 @@
 var inputContainer = document.getElementById("widthInputContainer");
 var widthReader = document.getElementById("widthReader");
+/* If heightReader exists, then we are in rref mode. Else, we are in inverse mode. */
 var heightReader = document.getElementById("heightReader");
 var submitButton = document.getElementById("submitButton");
 
@@ -78,7 +79,7 @@ calculateButton.onclick = function() {
 	outputContainer.style.visibility = "visible";
 }
 
-/* Generate an NxN grid of text fields in grid container. Set id of (i,j)'th element to "ij". */
+/* Generate an MxN grid of text fields in grid container. Set id of (i,j)'th element to "ij". */
 function generateGrid() {
 	while (grid.firstChild) {
 		grid.removeChild(grid.firstChild);
@@ -99,7 +100,7 @@ function generateGrid() {
 	grid.style.visibility = "visible";
 }
 
-/* Check if all inputs are filled and numerical. */
+/* Check if all inputs are filled, numerical, and integer. */
 function assertInputs() {
 	for (var i = 0; i < M; i++) {
 		for (var j = 0; j < N; j++) {
@@ -126,6 +127,7 @@ function getRref() {
 
 /* Given MxN array of Fractions, convert to rref form. */
 function rref(mat) {
+	/* If in inverse mode, dimensions will be N by 2N for augmented NxN */
 	if (!heightReader) N *= 2;
 	var pivotCol = 0;
 	var pivotRow = 0;
@@ -172,7 +174,7 @@ function addRows(mat, c, i, j) {
 }
 
 /* Move all rows below and including start with a zero in column j to the bottom of mat. Return 
-#rows with non-zero entry at col j. */
+count of rows with non-zero entry at col j. */
 function moveZeroRowsToBottom(mat, start, j) {
 	var count = 0;
 	var top = start;
@@ -191,7 +193,8 @@ function moveZeroRowsToBottom(mat, start, j) {
 	return count;
 }
 
-/* Return NxN Fraction matrix corresponding to inverse of NxN input. */
+/* Return NxN Fraction matrix corresponding to inverse of NxN input, or string "NONE" if inverse
+doesn't exist. */
 function getInverse() {
 	var mat = [];
 	for (var i = 0; i < N; i++) {
@@ -201,7 +204,9 @@ function getInverse() {
 		}
 		mat.push(row);
 	}
+	/* Inverse exists iff det != 0 */
 	if (det(mat) == 0) return "NONE";
+	/* Augment matrix with I_n */
 	for (var i = 0; i < N; i++) {
 		for (var j = 0; j < N; j++) {
 			mat[i][j] = new Fraction(mat[i][j], 1);
@@ -209,6 +214,7 @@ function getInverse() {
 			else mat[i].push(new Fraction(0,1));
 		}
 	}
+	/* Rref augmented matrix and retrieve solution */
 	rref(mat);
 	var ans = [];
 	for (var i = 0; i < N; i++) {
