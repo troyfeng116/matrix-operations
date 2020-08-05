@@ -55,7 +55,7 @@ calculateButton.onclick = function() {
 	var ans = getRref();
 	for (var i = 0; i < M; i++) {
 		for (var j = 0; j < N; j++) {
-			document.getElementById(i+""+j+"O").innerHTML = ans[i][j].toString();
+			document.getElementById(i+""+j+"O").innerHTML = ans[i][j].myToString();
 		}
 	}
 	outputContainer.style.visibility = "visible";
@@ -99,7 +99,7 @@ function getRref() {
 	for (var i = 0; i < M; i++) {
 		var row = [];
 		for (var j = 0; j < N; j++) {
-			row.push(parseInt(document.getElementById(i+""+j).value));
+			row.push(new Fraction(parseInt(document.getElementById(i+""+j).value), 1));
 		}
 		ans.push(row);
 	}
@@ -117,12 +117,12 @@ function rref(mat) {
 			pivotCol++;
 			continue;
 		}
-		var c = 1/(mat[pivotRow][pivotCol]);
+		var c = mat[pivotRow][pivotCol].reciprocal();
 		multRow(mat, pivotRow, c);
 		for (var row = 0; row < M; row++) {
 			if (row == pivotRow) ;
 			else if (mat[row][pivotCol] != 0) {
-				c = -(mat[row][pivotCol]);
+				c = mat[row][pivotCol].multiply(new Fraction(-1,1));
 				addRows(mat, c, pivotRow, row);
 			}
 		}
@@ -141,15 +141,15 @@ function swapRows(mat, i, j) {
 /* Mutiply row i by c. */
 function multRow(mat, i, c) {
 	for (var j = 0; j < N; j++) {
-		mat[i][j] *= c;
-		if (mat[i][j] == -0) mat[i][j] = 0;
+		mat[i][j] = mat[i][j].multiply(c);
+		//if (mat[i][j] == -0) mat[i][j] = 0;
 	}
 }
 
 /* Add c * row i to row j. */
 function addRows(mat, c, i, j) {
 	for (var col = 0; col < N; col++) {
-		mat[j][col] += c*mat[i][col];
+		mat[j][col] = mat[j][col].add(mat[i][col].multiply(c));
 	}
 }
 
@@ -160,7 +160,7 @@ function moveZeroRowsToBottom(mat, start, j) {
 	var top = start;
 	var bottom = M;
 	while (top < bottom) {
-		if (mat[top][j] == 0) {
+		if (mat[top][j].numerator == 0) {
 			swapRows(mat, top, bottom-1);
 			bottom--;
 		}
@@ -179,28 +179,29 @@ class Fraction {
 	}
 	myToString() {
 		if (this.numerator % this.denominator == 0) return this.numerator/this.denominator;
+		if (this.denominator < 0) {
+			this.numerator *= -1;
+			this.denominator *= -1;
+		}
 		return this.numerator + "/" + this.denominator;
 	}
 	simplify() {
 		var g = gcd(Math.abs(this.numerator),Math.abs(this.denominator));
-		console.log(g);
 		this.numerator /= g;
 		this.denominator /= g;
 	}
 	reciprocal() {
-		var temp = this.numerator;
-		this.numerator = this.denominator;
-		this.denominator = temp;
+		return new Fraction(this.denominator,this.numerator);
 	}
 	multiply(f) {
-		const ans = new Fraction(this.numerator*f.numerator, this.denominator*f.denominator)
+		var ans = new Fraction(this.numerator*f.numerator, this.denominator*f.denominator)
 		ans.simplify();
 		return ans;
 	}
 	add(f) {
 		var newNum = this.numerator*f.denominator + this.denominator*f.numerator;
 		var newDen = this.denominator * f.denominator;
-		const ans = new Fraction(newNum,newDen);
+		var ans = new Fraction(newNum,newDen);
 		ans.simplify();
 		return ans;
 	}
