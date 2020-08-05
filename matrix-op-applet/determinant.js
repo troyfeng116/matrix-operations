@@ -1,7 +1,7 @@
 var submitButton = document.getElementById("submitButton");
 var widthReader = document.getElementById("widthReader");
 var grid = document.getElementById("gridContainer");
-var widthInputContainer = document.getElementById("widthInputContainer");
+var inputContainer = document.getElementById("widthInputContainer");
 var secondInputContainer = document.getElementById("secondInputContainer");
 var calculateButton = document.getElementById("calculateButton");
 var outputContainer = document.getElementById("outputContainer");
@@ -14,9 +14,9 @@ submitButton.onclick = function() {
 		alert("N must be between 1 and 8");
 		return;
 	}
-	widthInputContainer.style.left = "10px";
-	widthInputContainer.style.top = "30%"
-	widthInputContainer.style.transform = "translate(0,-50%)";
+	inputContainer.style.left = "75%";
+	inputContainer.style.top = "40%"
+	inputContainer.style.transform = "translate(0,-50%)";
 	generateGrid();
 	secondInputContainer.style.visibility = "visible";
 	outputContainer.style.visibility = "hidden";
