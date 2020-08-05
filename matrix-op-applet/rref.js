@@ -56,32 +56,22 @@ calculateButton.onclick = function() {
 			outputGrid.appendChild(entry);
 		}
 	}
-	if (heightReader) {
-		var ans = getRref();
+	var ans = heightReader? getRref() : getInverse();
+	if (ans == "NONE") {
+		while (outputGrid.firstChild) {
+			outputGrid.removeChild(outputGrid.firstChild);
+		}
+		outputGrid.style.display = "inline-block";
+		outputGrid.style.height = (36)+"px";
+		outputGrid.style.width = (60)+"px";
+		var noInverse = document.createElement("div");
+		noInverse.innerHTML = "NONE";
+		outputGrid.appendChild(noInverse);
+	}
+	else {
 		for (var i = 0; i < M; i++) {
 			for (var j = 0; j < N; j++) {
 				document.getElementById(i+""+j+"O").innerHTML = ans[i][j].myToString();
-			}
-		}
-	}
-	else {
-		var ans = getInverse();
-		if (ans == "NONE") {
-			while (outputGrid.firstChild) {
-				outputGrid.removeChild(outputGrid.firstChild);
-			}
-			outputGrid.style.display = "inline-block";
-			outputGrid.style.height = (36)+"px";
-			outputGrid.style.width = (60)+"px";
-			var entry = document.createElement("div");
-			entry.innerHTML = "NONE";
-			outputGrid.appendChild(entry);
-		}
-		else {
-			for (var i = 0; i < N; i++) {
-				for (var j = 0; j < N; j++) {
-					document.getElementById(i+""+j+"O").innerHTML = ans[i][j].myToString();
-				}
 			}
 		}
 	}
