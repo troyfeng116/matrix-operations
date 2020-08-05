@@ -25,3 +25,13 @@ submitButton.onclick = function() {
 	secondInputContainer.style.visibility = "visible";
 	outputContainer.style.visibility = "hidden";
 }
+
+/* When Calculate! button pressed, process inputs and output. */
+calculateButton.onclick = function() {
+	if (!assertMatInput()) {
+		alert("Make sure all entries are filled with integers");
+		return;
+	}
+	
+}
+
