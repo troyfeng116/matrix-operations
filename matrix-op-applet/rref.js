@@ -46,7 +46,7 @@ calculateButton.onclick = function() {
 	}
 	outputGrid.style.display = "grid";
 	outputGrid.style.height = (36*M)+"px";
-	outputGrid.style.width = (60*N)+"px";
+	outputGrid.style.width = (48*N)+"px";
 	outputGrid.style.gridTemplateRows = "repeat("+M+",1fr)";
 	outputGrid.style.gridTemplateColumns = "repeat("+N+",1fr)";
 	for (var i = 0; i < M; i++) {
@@ -265,7 +265,7 @@ class Fraction {
 		this.denominator = denominator;
 	}
 	myToString() {
-		if (this.numerator % this.denominator == 0) return this.numerator/this.denominator;
+		if (this.numerator % this.denominator == 0) return (this.numerator/this.denominator).toString();
 		if (this.denominator < 0) {
 			this.numerator *= -1;
 			this.denominator *= -1;
