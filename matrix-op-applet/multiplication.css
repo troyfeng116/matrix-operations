@@ -28,3 +28,8 @@
 #secondInputContainer {
 	left:75%;
 }
+
+/* Position output container */
+#outputContainer {
+	top:90%;
+}
