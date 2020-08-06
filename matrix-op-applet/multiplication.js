@@ -1,13 +1,17 @@
+var inputContainer = document.getElementById("widthInputContainer");
 var widthReader = document.getElementById("widthReader");
 var submitButton = document.getElementById("submitButton");
 var heightReader = document.getElementById("heightReader");
-var inputContainer = document.getElementById("widthInputContainer");
-var secondInputContainer = document.getElementById("secondInputContainer");
-var calculateButton = document.getElementById("calculateButton");
-var outputContainer = document.getElementById("outputContainer");
-var outputGrid = document.getElementById("outputGrid");
+
 var grid1 = document.getElementById("gridContainer1");
 var grid2 = document.getElementById("gridContainer2");
+
+var secondInputContainer = document.getElementById("secondInputContainer");
+var fillZeroButton = document.getElementById("fillZeroButton");
+var calculateButton = document.getElementById("calculateButton");
+
+var outputContainer = document.getElementById("outputContainer");
+var outputGrid = document.getElementById("outputGrid");
 
 var N;
 var M;
@@ -33,6 +37,16 @@ submitButton.onclick = function() {
 	generateGrids();
 	outputContainer.style.visibility = "hidden";
 	secondInputContainer.style.visibility = "visible";
+}
+
+fillZeroButton.onclick = function() {
+	for (var i = 0; i < M; i++) {
+		for (var j = 0; j < N; j++) {
+			if (document.getElementById(i+""+j).value == "") {
+				document.getElementById(i+""+j).value = "0";
+			}
+		}
+	}
 }
 
 calculateButton.onclick = function() {
@@ -110,7 +124,7 @@ function assertInputs() {
 				document.getElementById(i+""+j+"MN").className="invalid";
 			}
 			else document.getElementById(i+""+j+"MN").className="";
-			
+
 			var y = document.getElementById(j+""+i+"NM").value;
 			if (isNaN(y) || y == "") {
 				allGood = false;

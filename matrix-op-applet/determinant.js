@@ -1,9 +1,13 @@
+var inputContainer = document.getElementById("widthInputContainer");
 var submitButton = document.getElementById("submitButton");
 var widthReader = document.getElementById("widthReader");
+
 var grid = document.getElementById("gridContainer");
-var inputContainer = document.getElementById("widthInputContainer");
+
 var secondInputContainer = document.getElementById("secondInputContainer");
+var fillZeroButton = document.getElementById("fillZeroButton");
 var calculateButton = document.getElementById("calculateButton");
+
 var outputContainer = document.getElementById("outputContainer");
 
 var n;
@@ -22,6 +26,16 @@ submitButton.onclick = function() {
 	generateGrid();
 	secondInputContainer.style.visibility = "visible";
 	outputContainer.style.visibility = "hidden";
+}
+
+fillZeroButton.onclick = function() {
+	for (var i = 0; i < n; i++) {
+		for (var j = 0; j < n; j++) {
+			if (document.getElementById(i+""+j).value == "") {
+				document.getElementById(i+""+j).value = "0";
+			}
+		}
+	}
 }
 
 /* When Calculate! button pressed, process inputs and output. */

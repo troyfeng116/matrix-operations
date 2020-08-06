@@ -7,6 +7,7 @@ var submitButton = document.getElementById("submitButton");
 var grid = document.getElementById("gridContainer");
 
 var secondInputContainer = document.getElementById("secondInputContainer");
+var fillZeroButton = document.getElementById("fillZeroButton");
 var calculateButton = document.getElementById("calculateButton");
 
 var outputContainer = document.getElementById("outputContainer");
@@ -39,6 +40,16 @@ submitButton.onclick = function() {
 	generateGrid();
 	outputContainer.style.visibility = "hidden";
 	secondInputContainer.style.visibility = "visible";
+}
+
+fillZeroButton.onclick = function() {
+	for (var i = 0; i < M; i++) {
+		for (var j = 0; j < N; j++) {
+			if (document.getElementById(i+""+j).value == "") {
+				document.getElementById(i+""+j).value = "0";
+			}
+		}
+	}
 }
 
 calculateButton.onclick = function() {
