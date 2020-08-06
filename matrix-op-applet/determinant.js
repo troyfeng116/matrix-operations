@@ -11,9 +11,11 @@ var n;
 submitButton.onclick = function() {
 	n = widthReader.value;
 	if (isNaN(n) || n < 1 || n > 8 || n%1 != 0) {
+		widthReader.className = "invalid";
 		alert("N must be between 1 and 8");
 		return;
 	}
+	widthReader.className = "";
 	inputContainer.style.left = "65%";
 	inputContainer.style.top = "40%"
 	inputContainer.style.transform = "translate(0,-50%)";
@@ -55,14 +57,17 @@ function generateGrid() {
 
 /* Assert that all NxN text fields are populated with integers. */
 function assertMatInput() {
+	var allGood = true;
 	for (var i = 0; i < n; i++) {
 		for (var j = 0; j < n; j++) {
 			if (isNaN(document.getElementById(i+""+j).value) || document.getElementById(i+""+j).value == "") {
-				return false;
+				allGood = false;
+				document.getElementById(i+""+j).className="invalid";
 			}
+			else document.getElementById(i+""+j).className="";
 		}
 	}
-	return true;
+	return allGood;
 }
 
 /* Given that text fields in grid are all integers, retrieve inputs and place into NxN array, call det(). */

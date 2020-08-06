@@ -18,15 +18,19 @@ var N;
 submitButton.onclick = function() {
 	N = widthReader.value;
 	if (isNaN(N) || N < 1 || N > 8 || N%1 != 0) {
+		widthReader.className = "invalid";
 		alert("N must be between 1 and 8");
 		return;
 	}
+	else widthReader.className = "";
 	if (heightReader) {
 		M = heightReader.value;
 		if (isNaN(M) || M < 1 || M > 8 || M%1 != 0) {
+			heightReader.className = "invalid";
 			alert("M must be between 1 and 8");
 			return;
 		}
+		else heightReader.className = "";
 	}
 	else M = N;
 	inputContainer.style.top = "40%";
@@ -102,13 +106,18 @@ function generateGrid() {
 
 /* Check if all inputs are filled, numerical, and integer. */
 function assertInputs() {
+	var allGood = true;
 	for (var i = 0; i < M; i++) {
 		for (var j = 0; j < N; j++) {
 			var x = document.getElementById(i+""+j).value;
-			if (isNaN(x) || x=="" || x%1 != 0) return false;
+			if (isNaN(x) || x=="" || x%1 != 0) {
+				allGood = false;
+				document.getElementById(i+""+j).className = "invalid";
+			}
+			else document.getElementById(i+""+j).className = "";
 		}
 	}
-	return true;
+	return allGood;
 }
 
 /* Return MxN Fraction matrix corresponding to rref of input. */

@@ -15,12 +15,16 @@ var M;
 submitButton.onclick = function() {
 	N = widthReader.value;
 	if (isNaN(N) || N < 1 || N > 6 || N%1 != 0) {
-		alert("N must be between 1 and 6");
-		return;
+		widthReader.className = "invalid";
 	}
+	else widthReader.className = "";
 	M = heightReader.value;
 	if (isNaN(M) || M < 1 || M > 6 || M%1 != 0) {
-		alert("M must be between 1 and 6");
+		heightReader.className = "invalid";
+	}
+	else heightReader.className = "";
+	if (heightReader.className == "invalid" || widthReader.className == "invalid") {
+		alert("M and N must be between 1 and 6");
 		return;
 	}
 	inputContainer.style.top = "40%";
@@ -97,19 +101,25 @@ function generateGrids() {
 }
 
 function assertInputs() {
+	var allGood = true;
 	for (var i = 0; i < M; i++) {
 		for (var j = 0; j < N; j++) {
 			var x = document.getElementById(i+""+j+"MN").value;
 			if (isNaN(x) || x == "") {
-				return false;
+				allGood = false;
+				document.getElementById(i+""+j+"MN").className="invalid";
 			}
+			else document.getElementById(i+""+j+"MN").className="";
+			
 			var y = document.getElementById(j+""+i+"NM").value;
 			if (isNaN(y) || y == "") {
-				return false;
+				allGood = false;
+				document.getElementById(j+""+i+"NM").className="invalid";
 			}
+			else document.getElementById(j+""+i+"NM").className="";
 		}
 	}
-	return true;
+	return allGood;
 }
 
 function getProduct() {

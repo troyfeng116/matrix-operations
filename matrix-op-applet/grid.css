@@ -62,6 +62,11 @@
 	visibility:hidden;
 }
 
+/* Style invalid input fields */
+.invalid {
+	border:2px solid red;
+}
+
 /* Style output container */
 #outputContainer {
 	display:inline-block;

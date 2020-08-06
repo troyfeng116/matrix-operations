@@ -1,7 +1,6 @@
 /* General styling. */
 body {
 	background-color:white;
-	/*background: linear-gradient(270deg, rgb(110,110,110) 2%, rgb(50,50,50) 98%);*/
 }
 body div {
 	background-color:gray;
@@ -37,6 +36,9 @@ body div {
 	border-top:1px solid black;
 	width:200px;
 }
+#menubar li:last-child {
+	border-bottom: 1px solid black;
+}
 #menubarContainer a {
 	display:block;
 	/*float:left;*/
@@ -44,8 +46,8 @@ body div {
 	padding:30px 0;
 	color:black;
 	background-color:lightgray;
-	font-style: bold;
-	font-family: Arial, Helvetica;
+	font-size: 18px;
+	font-family: copperplate;
 	text-align:center;
 	text-transform:uppercase;
 }
@@ -61,9 +63,6 @@ body div {
 	text-size:100px;
 	background-color:gray;
 	color:gold;
-}
-#menubar li:last-child {
-	border-bottom: 1px solid black;
 }
 
 /* Footer container styling. */
