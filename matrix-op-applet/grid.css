@@ -6,6 +6,7 @@
 	left:50%;
 	transform:translate(-50%,-50%);
 	border:1px solid;
+	border-radius:10px;
 	padding:10px;
 }
 
@@ -14,6 +15,7 @@
 	display:inline-block;
 	font-size:14px;
 	border:1px solid;
+	border-radius:10px;
 	padding:10px;
 	position:absolute;
 	top:130px;
@@ -23,6 +25,7 @@
 #instructionsContainer {
 	display:none;
 	border:1px solid;
+	border-radius:10px;
 	padding:10px;
 	position:absolute;
 	top:50%;
@@ -58,6 +61,7 @@
 	left:65%;
 	top:57%;
 	border:1px solid;
+	border-radius:10px;
 	padding:10px;
 	visibility:hidden;
 }
@@ -74,9 +78,11 @@
 	left:65%;
 	top:85%;
 	border:1px solid;
+	border-radius:10px;
 	padding:10px;
 	visibility:hidden;
 	font-size:28px;
+
 }
 #outputGrid {
 	border:1px solid;
