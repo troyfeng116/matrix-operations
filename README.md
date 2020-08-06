@@ -1,7 +1,6 @@
 Matrix Operations
 =================
 Troy Feng ([troy.feng@yale.edu](mailto:troy.feng@yale.edu))
-----------------
 
 This project is split into two parts: a directory of Java classes, and a directory of HTML/CSS/JavaScript files.
 
@@ -15,4 +14,4 @@ Currently, my Java Matrix objects can support integers and rational fractions, b
 
 The HTML/CSS/JavaScript portion represents a front-end endeavor that is much easier to use than the clumsy tester class in the Java files. All pages are written in HTML, styled with CSS, and scripted using JavaScript. Features include responsive board size, robust input parsing, and fraction support. Matrix operation algorithms and functions are essentially translated from Java to JavaScript, but with some clever simplifications. 
 
-Please find and feel free to use the finished tool here: (link will be provided soon)
+Please find and feel free to use the finished tool here: (https://troyfeng116.github.io/matrix-operations/index.html)
