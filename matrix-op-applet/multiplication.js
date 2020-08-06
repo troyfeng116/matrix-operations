@@ -42,8 +42,11 @@ submitButton.onclick = function() {
 fillZeroButton.onclick = function() {
 	for (var i = 0; i < M; i++) {
 		for (var j = 0; j < N; j++) {
-			if (document.getElementById(i+""+j).value == "") {
-				document.getElementById(i+""+j).value = "0";
+			if (document.getElementById(i+""+j+"MN").value == "") {
+				document.getElementById(i+""+j+"MN").value = "0";
+			}
+			if (document.getElementById(j+""+i+"NM").value == "") {
+				document.getElementById(j+""+i+"NM").value = "0";
 			}
 		}
 	}
