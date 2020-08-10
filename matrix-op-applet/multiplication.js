@@ -1,7 +1,8 @@
 var inputContainer = document.getElementById("widthInputContainer");
-var widthReader = document.getElementById("widthReader");
+var mReader = document.getElementById("mReader");
+var nReader = document.getElementById("nReader");
+var kReader = document.getElementById("kReader");
 var submitButton = document.getElementById("submitButton");
-var heightReader = document.getElementById("heightReader");
 
 var grid1 = document.getElementById("gridContainer1");
 var grid2 = document.getElementById("gridContainer2");
@@ -13,22 +14,29 @@ var calculateButton = document.getElementById("calculateButton");
 var outputContainer = document.getElementById("outputContainer");
 var outputGrid = document.getElementById("outputGrid");
 
-var N;
 var M;
+var N;
+var K;
 
 submitButton.onclick = function() {
-	N = widthReader.value;
-	if (isNaN(N) || N < 1 || N > 6 || N%1 != 0) {
-		widthReader.className = "invalid";
-	}
-	else widthReader.className = "";
-	M = heightReader.value;
+	M = mReader.value;
 	if (isNaN(M) || M < 1 || M > 6 || M%1 != 0) {
-		heightReader.className = "invalid";
+		mReader.className = "invalid";
 	}
-	else heightReader.className = "";
-	if (heightReader.className == "invalid" || widthReader.className == "invalid") {
-		alert("M and N must be between 1 and 6");
+	else mReader.className = "";
+	N = nReader.value;
+	if (isNaN(N) || N < 1 || N > 6 || N%1 != 0) {
+		nReader.className = "invalid";
+	}
+	else nReader.className = "";
+	K = kReader.value;
+	if (isNaN(K) || K < 1 || K > 6 || K%1 != 0) {
+		kReader.className = "invalid";
+	}
+	else kReader.className = "";
+	
+	if (mReader.className == "invalid" || nReader.className == "invalid" || kReader.className == "invalid") {
+		alert("M, N, and K must be between 1 and 6");
 		return;
 	}
 	inputContainer.style.top = "40%";
@@ -45,8 +53,12 @@ fillZeroButton.onclick = function() {
 			if (document.getElementById(i+""+j+"MN").value == "") {
 				document.getElementById(i+""+j+"MN").value = "0";
 			}
-			if (document.getElementById(j+""+i+"NM").value == "") {
-				document.getElementById(j+""+i+"NM").value = "0";
+		}
+	}
+	for (var i = 0; i < N; i++) {
+		for (var j = 0; j < K; j++) {
+			if (document.getElementById(i+""+j+"NK").value == "") {
+				document.getElementById(i+""+j+"NK").value = "0";
 			}
 		}
 	}
@@ -60,12 +72,12 @@ calculateButton.onclick = function() {
 	while (outputGrid.firstChild) {
 		outputGrid.removeChild(outputGrid.firstChild);
 	}
-	outputGrid.style.width = (60*M)+"px";
+	outputGrid.style.width = (60*K)+"px";
 	outputGrid.style.height = (36*M)+"px";
 	outputGrid.style.gridTemplateRows = "repeat("+M+",1fr)";
-	outputGrid.style.gridTemplateColumns = "repeat("+M+",1fr)";
+	outputGrid.style.gridTemplateColumns = "repeat("+K+",1fr)";
 	for (var i = 0; i < M; i++) {
-		for (var j = 0; j < M; j++) {
+		for (var j = 0; j < K; j++) {
 			var entry = document.createElement("div");
 			entry.id=i+""+j;
 			outputGrid.appendChild(entry);
@@ -73,7 +85,7 @@ calculateButton.onclick = function() {
 	}
 	var ans = getProduct();
 	for (var i = 0; i < M; i++) {
-		for (var j = 0; j < M; j++) {
+		for (var j = 0; j < K; j++) {
 			document.getElementById(i+""+j).innerHTML = ans[i][j];
 		}
 	}
@@ -102,16 +114,16 @@ function generateGrids() {
 		}
 	}
 	grid2.style.visibility = "visible";
-	grid2.style.width = (N<=4 && M<=4) ? (60*M)+"px" : (48*M)+"px";
-	grid2.style.height = (N<=4 && M<=4) ? (48*N)+"px" : (36*N)+"px";
+	grid2.style.width = (N<=4 && K<=4) ? (60*K)+"px" : (48*K)+"px";
+	grid2.style.height = (N<=4 && K<=4) ? (48*N)+"px" : (36*N)+"px";
 	grid2.style.gridTemplateRows = "repeat("+N+",1fr)";
-	grid2.style.gridTemplateColumns = "repeat("+M+",1fr)";
+	grid2.style.gridTemplateColumns = "repeat("+K+",1fr)";
 	for (var i = 0; i < N; i++) {
-		for (var j = 0; j < M; j++) {
+		for (var j = 0; j < K; j++) {
 			var inputBox = document.createElement("input");
 			inputBox.type = "text";
 			inputBox.size = "3";
-			inputBox.id=i+""+j+"NM";
+			inputBox.id=i+""+j+"NK";
 			grid2.appendChild(inputBox);
 		}
 	}
@@ -127,13 +139,16 @@ function assertInputs() {
 				document.getElementById(i+""+j+"MN").className="invalid";
 			}
 			else document.getElementById(i+""+j+"MN").className="";
-
-			var y = document.getElementById(j+""+i+"NM").value;
+		}
+	}
+	for (var i = 0; i < N; i++) {
+		for (var j = 0; j < K; j++) {
+			var y = document.getElementById(i+""+j+"NK").value;
 			if (isNaN(y) || y == "") {
 				allGood = false;
-				document.getElementById(j+""+i+"NM").className="invalid";
+				document.getElementById(i+""+j+"NK").className="invalid";
 			}
-			else document.getElementById(j+""+i+"NM").className="";
+			else document.getElementById(j+""+i+"NK").className="";
 		}
 	}
 	return allGood;
@@ -143,11 +158,11 @@ function getProduct() {
 	var ans = [];
 	for (var i = 0; i < M; i++) {
 		var row = [];
-		for (var j = 0; j < M; j++) {
+		for (var j = 0; j < K; j++) {
 			var sum = 0;
 			for (var z = 0; z < N; z++) {
 				var x = document.getElementById(i+""+z+"MN").value;
-				var y = document.getElementById(z+""+j+"NM").value;
+				var y = document.getElementById(z+""+j+"NK").value;
 				sum += x*y;
 			}
 			row.push(sum);
