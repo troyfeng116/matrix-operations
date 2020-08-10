@@ -148,7 +148,7 @@ function assertInputs() {
 				allGood = false;
 				document.getElementById(i+""+j+"NK").className="invalid";
 			}
-			else document.getElementById(j+""+i+"NK").className="";
+			else document.getElementById(i+""+j+"NK").className="";
 		}
 	}
 	return allGood;

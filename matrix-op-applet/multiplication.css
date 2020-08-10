@@ -27,9 +27,12 @@
 /* Position second input container properly. */
 #secondInputContainer {
 	left:75%;
+	top:65%;
 }
 
 /* Position output container */
 #outputContainer {
 	top:90%;
+	left:50%;
+	transform:translate(-50%,0);
 }
