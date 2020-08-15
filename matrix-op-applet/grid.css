@@ -8,18 +8,19 @@
 	border:1px solid;
 	border-radius:10px;
 	padding:10px;
+	font-size:1.2vw;
 }
 
 /* Style instructions (set visible on hover) */
 #insHover {
 	display:inline-block;
-	font-size:14px;
+	font-size:1vw;
 	border:1px solid;
 	border-radius:10px;
 	padding:10px;
 	position:absolute;
 	top:22%;
-	right:3%;
+	right:1%;
 	transform:translate(0,-50%);
 	background-color:rgb(50,50,50);
 }

@@ -5,6 +5,7 @@ body {
 body div {
 	background-color:gray;
 	color:gold;
+	font-size:1.2vw;
 }
 #heading {
 	position:absolute;
@@ -59,7 +60,7 @@ body div {
 	border-top-right-radius:20px;
 	border-bottom-right-radius:20px;
 	border-right:1px solid black;
-	font-size:1.1em;
+	font-size:1.4vw;
 	background-color:rgb(50,50,50);
 	color:gold;
 }
