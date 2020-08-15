@@ -8,7 +8,6 @@
 	border:1px solid;
 	border-radius:10px;
 	padding:10px;
-	font-size:1.2vw;
 }
 
 /* Style instructions (set visible on hover) */
@@ -35,6 +34,7 @@
 	transform:translate(-50%,-50%);
 	z-index:1;
 	background-color:rgb(50,50,50);
+	width:10%;
 }
 #insHover:hover + #instructionsContainer {
 	display:inline-block;
@@ -67,6 +67,7 @@
 	border-radius:10px;
 	padding:10px;
 	visibility:hidden;
+	width:17%;
 }
 
 /* Style invalid input fields */
@@ -79,13 +80,12 @@
 	display:inline-block;
 	position:absolute;
 	left:65%;
-	top:85%;
+	top:87%;
 	border:1px solid;
 	border-radius:10px;
 	padding:10px;
 	visibility:hidden;
-	font-size:28px;
-
+	font-size:2.4vw;
 }
 #outputGrid {
 	border:1px solid;
@@ -98,6 +98,6 @@
 }
 #outputGrid div {
 	padding:3px 0;
-	font-size:16px;
+	font-size:1vw;
 	text-align:center;
 }
