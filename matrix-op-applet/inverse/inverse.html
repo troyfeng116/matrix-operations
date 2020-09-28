@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Determinant</title>
+	<title>Inverse</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../css/all-pages.css">
@@ -9,6 +9,7 @@
 </head>
 
 <body>
+</body>
 	<div id="heading">
 		<h1>Matrix Operations</h1>
 	</div>
@@ -16,10 +17,10 @@
 	<div id="menubarContainer">
 		<ul id="menubar">
 			<li><a href="../../index.html">Home</a></li>
-			<li><a href="multiplication.html">Multiplication</a></li>
-			<li><a href="determinant.html" class="active">Determinant</a></li>
-			<li><a href="rref.html">Rref</a></li>
-			<li><a href="inverse.html">Inverse</a></li>
+			<li><a href="../multiplication/multiplication.html">Multiplication</a></li>
+			<li><a href="../determinant/determinant.html">Determinant</a></li>
+			<li><a href="../rref/rref.html">Rref</a></li>
+			<li><a href="inverse.html" class="active">Inverse</a></li>
 			<li><a>Eigenvalues</a></li>
 		</ul>
 	</div>
@@ -37,7 +38,7 @@
 		<h2>INSTRUCTIONS:</h2>
 		Enter N, where N = #rows = #cols, and hit "Submit".<br><br>
 		Enter the entries of an NxN matrix, and hit "Calculate!".<br><br>
-		The determinant of the entered NxN matrix will be displayed in an output box.
+		If it exists, the inverse of the entered NxN matrix will be displayed in an output box.
 	</div>
 
 	<div id="gridContainer">
@@ -51,7 +52,9 @@
 		<button id="calculateButton">Calculate!</button>
 	</div>
 
-	<div id="outputContainer">DETERMINANT:</div>
+	<div id="outputContainer">INVERSE:<br><br>
+		<div id="outputGrid"></div>
+	</div>
 
 	<div id="footerbox"> 
 		<address>
@@ -60,7 +63,6 @@
 		</address>
 	</div>
 
-	<script src="../scripts/algorithms/determinant.js" type="text/javascript"></script>
-</body>
+	<script src="../algorithms/rref.js" type="text/javascript"></script>
 
 </html>
