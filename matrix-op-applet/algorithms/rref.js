@@ -34,17 +34,14 @@ submitButton.onclick = function() {
 		else heightReader.className = "";
 	}
 	else M = N;
-	inputContainer.style.top = "40%";
-	inputContainer.style.left = "65%";
-	inputContainer.style.transform = "translate(0,-50%)";
 	generateGrid();
 	outputContainer.style.visibility = "hidden";
 	secondInputContainer.style.visibility = "visible";
 }
 
 fillZeroButton.onclick = function() {
-	for (var i = 0; i < M; i++) {
-		for (var j = 0; j < N; j++) {
+	for (let i = 0; i < M; i++) {
+		for (let j = 0; j < N; j++) {
 			if (document.getElementById(i+""+j).value == "") {
 				document.getElementById(i+""+j).value = "0";
 			}
@@ -65,8 +62,8 @@ calculateButton.onclick = function() {
 	outputGrid.style.width = (48*N)+"px";
 	outputGrid.style.gridTemplateRows = "repeat("+M+",1fr)";
 	outputGrid.style.gridTemplateColumns = "repeat("+N+",1fr)";
-	for (var i = 0; i < M; i++) {
-		for (var j = 0; j < N; j++) {
+	for (let i = 0; i < M; i++) {
+		for (let j = 0; j < N; j++) {
 			var entry = document.createElement("div");
 			entry.id=i+""+j+"O";
 			outputGrid.appendChild(entry);
@@ -217,7 +214,7 @@ function moveZeroRowsToBottom(mat, start, j) {
 doesn't exist. */
 function getInverse() {
 	var mat = [];
-	for (var i = 0; i < N; i++) {
+	for (let i = 0; i < N; i++) {
 		var row = [];
 		for (var j = 0; j < N; j++) {
 			row.push(parseInt(document.getElementById(i+""+j).value));
@@ -227,7 +224,7 @@ function getInverse() {
 	/* Inverse exists iff det != 0 */
 	if (det(mat) == 0) return "NONE";
 	/* Augment matrix with I_n */
-	for (var i = 0; i < N; i++) {
+	for (let i = 0; i < N; i++) {
 		for (var j = 0; j < N; j++) {
 			mat[i][j] = new Fraction(mat[i][j], 1);
 			if (i == j) mat[i].push(new Fraction(1,1));
