@@ -22,7 +22,8 @@ body div {
 #heading h1 {
 	text-align: center;
 	text-transform: uppercase;
-	font-size: 45px;
+	font-size: 40px;
+	padding: 0 40px;
 }
 
 .page-body-container {
@@ -31,8 +32,8 @@ body div {
 
 .page-body {
 	flex: 7;
-	border: 1px solid red;
 	padding: 0 40px;
+	display: flex;
 }
 
 /* Footer container styling. */

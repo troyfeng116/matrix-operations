@@ -15,51 +15,54 @@
 		<h1>Matrix Operations</h1>
 	</div>
 
-	<div id="menubarContainer">
-		<ul id="menubar">
-			<li><a href="../../index.html">Home</a></li>
-			<li><a href="multiplication.html" class="active">Multiplication</a></li>
-			<li><a href="../determinant/determinant.html">Determinant</a></li>
-			<li><a href="../rref/rref.html">Rref</a></li>
-			<li><a href="../inverse/inverse.html">Inverse</a></li>
-			<li><a>Eigenvalues</a></li>
-		</ul>
-	</div>
-	<br>
+	<div class="page-body-container">
+		<nav class="menubar">
+			<a href="../../index.html" class="menubar-link">Home</a>
+			<a href="/multiplication.html" class="menubar-link active">Multiplication</a>
+			<a href="../determinant/determinant.html" class="menubar-link">Determinant</a>
+			<a href="../rref/rref.html" class="menubar-link">Rref</a>
+			<a href="../inverse/inverse.html" class="menubar-link">Inverse</a>
+			<a class="menubar-link">Eigenvalues</a>
+		</nav>
 
-	<div id="widthInputContainer">
-		<label for="r1">Enter M</label><br>
-		<input type="text" id="mReader" name="r1"><br><br>
-		<label for="r2">Enter N</label><br>
-		<input type="text" id="nReader" name="r2"><br><br>
-		<label for="r3">Enter K</label><br>
-		<input type="text" id="kReader" name="r3"><br><br>
-		<button id="submitButton">Submit</button>
-	</div>
-
-	<div id="insHover">INSTRUCTIONS</div>
-
-	<div id="instructionsContainer">
-		<h2>INSTRUCTIONS:</h2>
-		Enter M, N, and K, corresponding to the dimensions of the MxN and NxK matrices you wish to multiply, and hit "Submit".<br><br>
-		Enter the entries of the MxN and NxK matries to be multiplied, and hit "Calculate!".<br><br>
-		An MxK matrix corresponding to the product of the left and right matrices will be displayed in the output box.
-	</div>
-
-	<div id="gridContainer1" class="gridContainer"></div>
-
-	<div id="gridContainer2" class="gridContainer"></div>
-
-	<div id="secondInputContainer">
-		Enter inputs to the left. <br>
-		Press "Fill rest with zeroes" to fill empty entries with zero.<br>
-		Press "Calculate!" when done. <br><br>
-		<button id="fillZeroButton">Fill rest with zeroes</button><br><br>
-		<button id="calculateButton">Calculate!</button>
-	</div>
-
-	<div id="outputContainer">PRODUCT:<br><br>
-		<div id="outputGrid"></div>
+		<div class="page-body">
+			<div class="first-column">
+				<div id="widthInputContainer">
+					<label for="r1">Enter M</label><br>
+					<input type="text" id="mReader" name="r1"><br><br>
+					<label for="r2">Enter N</label><br>
+					<input type="text" id="nReader" name="r2"><br><br>
+					<label for="r3">Enter K</label><br>
+					<input type="text" id="kReader" name="r3"><br><br>
+					<button id="submitButton">Submit</button>
+				</div>
+			</div>
+			<div class="second-column">
+				<div id="gridContainer1" class="gridContainer"></div>
+				<div id="gridContainer2" class="gridContainer"></div>
+			</div>
+			<div class="third-column">
+				<div id="insHover">INSTRUCTIONS</div>
+				<div id="instructionsContainer">
+					<h2>INSTRUCTIONS:</h2>
+					Enter M, N, and K, corresponding to the dimensions of the MxN and NxK matrices you wish to multiply, and hit
+					"Submit".<br><br>
+					Enter the entries of the MxN and NxK matries to be multiplied, and hit "Calculate!".<br><br>
+					An MxK matrix corresponding to the product of the left and right matrices will be displayed in the output box.
+				</div>
+				<div id="secondInputContainer">
+					Enter inputs to the left. <br>
+					Press "Fill rest with zeroes" to fill empty entries with zero.<br>
+					Press "Calculate!" when done. <br><br>
+					<button id="fillZeroButton">Fill rest with zeroes</button><br><br>
+					<button id="calculateButton">Calculate!</button>
+				</div>
+				
+				<div id="outputContainer">PRODUCT:<br><br>
+					<div id="outputGrid"></div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<div id="footerbox"> 

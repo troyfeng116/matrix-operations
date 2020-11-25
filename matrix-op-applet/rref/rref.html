@@ -14,54 +14,54 @@
 		<h1>Matrix Operations</h1>
 	</div>
 
-	<div class="big-container">
-		<div class="menubar-container">
-			<nav id="menubar">
-				<a href="../../index.html">Home</a>
-				<a href="../multiplication/multiplication.html">Multiplication</a>
-				<a href="../determinant/determinant.html">Determinant</a>
-				<a href="../rref/rref.html" class="active">Rref</a>
-				<a href="../inverse/inverse.html">Inverse</a>
-				<a>Eigenvalues</a>
-				<div class="menubar-fill"></div>
-			</nav>
-		</div>
-		
-		<div class="first-column">
-			<div id="widthInputContainer">
-				<label for="width">Enter M = height</label><br>
-				<input type="text" id="heightReader" name="width"><br><br>
-				<label for="height">Enter N = width</label><br>
-				<input type="text" id="widthReader" name="height"><br><br>
-				<button id="submitButton">Submit</button>
+	<div class="page-body-container">
+		<nav class="menubar">
+			<a href="../../index.html" class="menubar-link">Home</a>
+			<a href="../multiplication/multiplication.html" class="menubar-link">Multiplication</a>
+			<a href="../determinant/determinant.html" class="menubar-link">Determinant</a>
+			<a href="rref.html" class="menubar-link active">Rref</a>
+			<a href="../inverse/inverse.html" class="menubar-link">Inverse</a>
+			<a class="menubar-link">Eigenvalues</a>
+		</nav>
+
+		<div class="page-body">
+			<div class="first-column">
+				<div id="widthInputContainer">
+					<label for="width">Enter M = height</label><br>
+					<input type="text" id="heightReader" name="width"><br><br>
+					<label for="height">Enter N = width</label><br>
+					<input type="text" id="widthReader" name="height"><br><br>
+					<button id="submitButton">Submit</button>
+				</div>
 			</div>
-		</div>
-	
-		<div class="second-column">
-			<div id="gridContainer"></div>
-		</div>
-	
-		<div class="third-column">
-			<div id="insHover">INSTRUCTIONS</div>
-	
-			<div id="instructionsContainer">
-				<h2>INSTRUCTIONS:</h2>
-				Enter M and N, where M = #rows and N = #cols, and hit "Submit".<br><br>
-				Enter the entries of an MxN matrix, and hit "Calculate!".<br><br>
-				The row-reduced echelon form (rref) of the entered MxN matrix will be displayed in an output box after undergoing Gauss-Jordan elimination.
+			
+			<div class="second-column">
+				<div id="gridContainer"></div>
 			</div>
-	
-			<div id="secondInputContainer">
-				<p>Enter inputs to the left.</p>
-				<p>Press "Fill rest with zeroes" to fill empty entries with zero.</p>
-				<p>Press "Calculate!" when done.</p>
-				<button id="fillZeroButton">Fill rest with zeroes</button><br>
-				<button id="calculateButton">Calculate!</button>
-			</div>
-	
-			<div id="outputContainer">
-				RREF:<br><br>
-				<div id="outputGrid"></div>
+			
+			<div class="third-column">
+				<div id="insHover">INSTRUCTIONS</div>
+			
+				<div id="instructionsContainer">
+					<h2>INSTRUCTIONS:</h2>
+					Enter M and N, where M = #rows and N = #cols, and hit "Submit".<br><br>
+					Enter the entries of an MxN matrix, and hit "Calculate!".<br><br>
+					The row-reduced echelon form (rref) of the entered MxN matrix will be displayed in an output box after
+					undergoing Gauss-Jordan elimination.
+				</div>
+			
+				<div id="secondInputContainer">
+					<p>Enter inputs to the left.</p>
+					<p>Press "Fill rest with zeroes" to fill empty entries with zero.</p>
+					<p>Press "Calculate!" when done.</p>
+					<button id="fillZeroButton">Fill rest with zeroes</button><br>
+					<button id="calculateButton">Calculate!</button>
+				</div>
+			
+				<div id="outputContainer">
+					RREF:<br><br>
+					<div id="outputGrid"></div>
+				</div>
 			</div>
 		</div>
 	</div>
