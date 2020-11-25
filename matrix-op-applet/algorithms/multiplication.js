@@ -39,9 +39,6 @@ submitButton.onclick = function() {
 		alert("M, N, and K must be between 1 and 6");
 		return;
 	}
-	inputContainer.style.top = "40%";
-	inputContainer.style.left = "75%";
-	inputContainer.style.transform = "translate(0,-50%)";
 	generateGrids();
 	outputContainer.style.visibility = "hidden";
 	secondInputContainer.style.visibility = "visible";

@@ -20,9 +20,6 @@ submitButton.onclick = function() {
 		return;
 	}
 	widthReader.className = "";
-	inputContainer.style.left = "65%";
-	inputContainer.style.top = "40%"
-	inputContainer.style.transform = "translate(0,-50%)";
 	generateGrid();
 	secondInputContainer.style.visibility = "visible";
 	outputContainer.style.visibility = "hidden";

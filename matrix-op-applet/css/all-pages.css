@@ -28,6 +28,7 @@ body div {
 
 .page-body-container {
 	display: flex;
+	min-height: 500px;
 }
 
 .page-body {
