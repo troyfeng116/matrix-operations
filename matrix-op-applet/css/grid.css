@@ -28,7 +28,7 @@
 button {
 	width: fit-content;
 	margin: auto;
-	background-color: rgb(50,50,50);
+	background-color: rgb(50, 50, 50);
 	color: gold;
 	padding: 5px 10px;
 }
@@ -42,16 +42,18 @@ button:hover {
 }
 
 /* Style the width input reader container */
+
 #widthInputContainer {
 	display: inline-flex;
 	flex-direction: column;
 	border: 1px solid;
 	border-radius: 10px;
 	padding: 20px;
-	background-color:gray;
+	background-color: gray;
 }
 
 /* Style instructions (set visible on hover) */
+
 #insHover {
 	width: fit-content;
 	margin: 20px 20px 20px auto;
@@ -59,8 +61,9 @@ button:hover {
 	border: 1px solid;
 	border-radius: 10px;
 	padding: 10px;
-	background-color: rgb(50,50,50);
+	background-color: rgb(50, 50, 50);
 }
+
 #instructionsContainer {
 	display: none;
 	border: 1px solid;
@@ -69,28 +72,31 @@ button:hover {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%,-50%);
+	transform: translate(-50%, -50%);
 	z-index: 1;
-	background-color: rgb(50,50,50);
+	background-color: rgb(50, 50, 50);
 }
-#insHover:hover + #instructionsContainer {
-	display:inline-block;
+
+#insHover:hover+#instructionsContainer {
+	display: inline-block;
 }
 
 /* Style the input grids for each matrix operation */
+
 #gridContainer {
 	visibility: hidden;
 	border: 1px solid black;
 	border-top: none;
 	border-bottom: none;
-	display:grid;
+	display: grid;
 	padding: 30px;
 	grid-gap: 10px;
 	border-radius: 30px;
 	background-color: white;
 }
 
-/* Style second input prompt container */ 
+/* Style second input prompt container */
+
 #secondInputContainer {
 	display: flex;
 	flex-direction: column;
@@ -98,18 +104,20 @@ button:hover {
 	border-radius: 10px;
 	padding: 10px;
 	visibility: hidden;
-	background-color:gray;
+	background-color: gray;
 	margin-bottom: 20px;
 	width: 80%;
 	text-align: center;
 }
 
 /* Style invalid input fields */
+
 .invalid {
-	border:2px solid red;
+	border: 2px solid red;
 }
 
 /* Style output container */
+
 #outputContainer {
 	width: 90%;
 	display: flex;
@@ -120,8 +128,9 @@ button:hover {
 	padding: 10px;
 	visibility: hidden;
 	font-size: 24px;
-	background-color:gray;
+	background-color: gray;
 }
+
 #outputGrid {
 	border: 1px solid;
 	border-radius: 15px;
@@ -131,6 +140,7 @@ button:hover {
 	grid-gap: 10px;
 	padding: 10px;
 }
+
 #outputGrid div {
 	padding: 3px 0;
 	font-size: 12px;

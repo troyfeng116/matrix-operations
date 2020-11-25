@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./index.css">
-	<link rel="stylesheet" href="../css/menubar.css">
+	<link rel="stylesheet" href="./matrix-op-applet/css/menubar.css">
 	<link rel="stylesheet" href="./matrix-op-applet/css/all-pages.css">
 </head>
 
@@ -14,21 +14,26 @@
 		<h1>Matrix Operations</h1>
 	</div>
 
-	<div id="menubarContainer">
-		<ul id="menubar">
-			<li><a href="index.html" class="active">Home</a></li>
-			<li><a href="matrix-op-applet/multiplication/multiplication.html">Multiplication</a></li>
-			<li><a href="matrix-op-applet/determinant/determinant.html">Determinant</a></li>
-			<li><a href="matrix-op-applet/rref/rref.html">Rref</a></li>
-			<li><a href="matrix-op-applet/inverse/inverse.html">Inverse</a></li>
-			<li><a>Eigenvalues</a></li>
-		</ul>
-	</div>
-	<br>
-
-	<div id="para">
-		Use the menubar to navigate between various matrix operation calculators.<br><br>
-		Please note that the eigenvalue feature has not yet been implemented.
+	<div class="page-body-container">
+		<nav class="menubar">
+			<a href="index.html" class="menubar-link active">Home</a>
+			<a href="matrix-op-applet/multiplication/multiplication.html" class="menubar-link">Multiplication</a>
+			<a href="matrix-op-applet/determinant/determinant.html" class="menubar-link">Determinant</a>
+			<a href="matrix-op-applet/rref/rref.html" class="menubar-link">Rref</a>
+			<a href="matrix-op-applet/inverse/inverse.html" class="menubar-link">Inverse</a>
+			<a class="menubar-link">Eigenvalues</a>
+		</nav>
+		
+		<div class="page-body">
+			<div class="index-body">
+				<p class="index-para">
+					Use the menubar to navigate between various matrix operation calculators.
+				</p>
+				<p class="index-para">
+					Please note that the eigenvalue feature has not yet been implemented.
+				</p>
+			</div>
+		</div>
 	</div>
 
 

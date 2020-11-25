@@ -1,34 +1,46 @@
 /* General styling. */
+
 body {
-	background-color:white;
+	background-color: white;
 }
 
 body div {
-	color:gold;
+	color: gold;
 	font-family: 'Courier New', Courier, monospace;
 }
 
 #heading {
 	display: flex;
 	justify-content: center;
-	background-color:rgb(50,50,50);
-	color:gold;
-	width:100%;
+	background-color: rgb(50, 50, 50);
+	color: gold;
+	width: 100%;
 	margin: 0;
 	font-family: copperplate;
 }
 
 #heading h1 {
-	text-align:center;
-	text-transform:uppercase;
+	text-align: center;
+	text-transform: uppercase;
 	font-size: 45px;
 }
 
+.page-body-container {
+	display: flex;
+}
+
+.page-body {
+	flex: 7;
+	border: 1px solid red;
+	padding: 0 40px;
+}
+
 /* Footer container styling. */
+
 #footerbox {
-	display:none;
-	position:absolute;
-	bottom:10px;
-	margin-left:auto;
-	margin-right:auto;
+	display: none;
+	position: absolute;
+	bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
 }
