@@ -65,7 +65,7 @@ calculateButton.onclick = function() {
 	outputGrid.style.gridTemplateColumns = `repeat(${N},1fr)`;
 	for (let i = 0; i < M; i++) {
 		for (let j = 0; j < N; j++) {
-			var entry = document.createElement("div");
+			const entry = document.createElement("div");
 			entry.id = `${i}${j}O`;
 			outputGrid.appendChild(entry);
 		}

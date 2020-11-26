@@ -1,16 +1,16 @@
-var inputContainer = document.getElementById("widthInputContainer");
-var submitButton = document.getElementById("submitButton");
-var widthReader = document.getElementById("widthReader");
+const inputContainer = document.getElementById("widthInputContainer");
+const submitButton = document.getElementById("submitButton");
+const widthReader = document.getElementById("widthReader");
 
-var grid = document.getElementById("gridContainer");
+const grid = document.getElementById("gridContainer");
 
-var secondInputContainer = document.getElementById("secondInputContainer");
-var fillZeroButton = document.getElementById("fillZeroButton");
-var calculateButton = document.getElementById("calculateButton");
+const secondInputContainer = document.getElementById("secondInputContainer");
+const fillZeroButton = document.getElementById("fillZeroButton");
+const calculateButton = document.getElementById("calculateButton");
 
-var outputContainer = document.getElementById("outputContainer");
+const outputContainer = document.getElementById("outputContainer");
 
-var n;
+let n;
 
 submitButton.onclick = function() {
 	n = widthReader.value;
@@ -26,10 +26,10 @@ submitButton.onclick = function() {
 }
 
 fillZeroButton.onclick = function() {
-	for (var i = 0; i < n; i++) {
-		for (var j = 0; j < n; j++) {
-			if (document.getElementById(i+""+j).value == "") {
-				document.getElementById(i+""+j).value = "0";
+	for (let i = 0; i < n; i++) {
+		for (let j = 0; j < n; j++) {
+			if (document.getElementById(`${i}${j}`).value === "") {
+				document.getElementById(`${i}${j}`).value = "0";
 			}
 		}
 	}
@@ -50,16 +50,16 @@ function generateGrid() {
 	while (grid.firstChild) {
 		grid.removeChild(grid.firstChild);
 	}
-	grid.style.height = n<=4 ? (48*n)+"px" : (36*n)+"px";
-	grid.style.width = n<=4 ? (60*n)+"px" : (48*n)+"px";
-	grid.style.gridTemplateRows = "repeat("+n+", 1fr)";
-	grid.style.gridTemplateColumns = "repeat("+n+", 1fr)";
-	for (var i = 0; i < n; i++) {
-		for (var j = 0; j < n; j++) {
-			var inputField = document.createElement("input");
-			inputField.type="text";
-			inputField.size=3;
-			inputField.id=i+""+j;
+	grid.style.height = n <= 4 ? `${48 * n}px` : `${36 * n}px`;
+	grid.style.width = n <= 4 ? `${60 * n}px` : `${48 * n}px`;
+	grid.style.gridTemplateRows = `repeat(${n}, 1fr)`;
+	grid.style.gridTemplateColumns = `repeat(${n}, 1fr)`;
+	for (let i = 0; i < n; i++) {
+		for (let j = 0; j < n; j++) {
+			const inputField = document.createElement("input");
+			inputField.type = "text";
+			inputField.size = 3;
+			inputField.id = `${i}${j}`;
 			grid.appendChild(inputField);
 		}
 	}
@@ -68,14 +68,14 @@ function generateGrid() {
 
 /* Assert that all NxN text fields are populated with integers. */
 function assertMatInput() {
-	var allGood = true;
-	for (var i = 0; i < n; i++) {
-		for (var j = 0; j < n; j++) {
-			if (isNaN(document.getElementById(i+""+j).value) || document.getElementById(i+""+j).value == "") {
+	let allGood = true;
+	for (let i = 0; i < n; i++) {
+		for (let j = 0; j < n; j++) {
+			if (isNaN(document.getElementById(`${i}${j}`).value) || document.getElementById(`${i}${j}`).value === "") {
 				allGood = false;
-				document.getElementById(i+""+j).className="invalid";
+				document.getElementById(`${i}${j}`).className = "invalid";
 			}
-			else document.getElementById(i+""+j).className="";
+			else document.getElementById(`${i}${j}`).className = "";
 		}
 	}
 	return allGood;
@@ -83,11 +83,11 @@ function assertMatInput() {
 
 /* Given that text fields in grid are all integers, retrieve inputs and place into NxN array, call det(). */
 function calculateDeterminant() {
-	var arr = [];
-	for (var i = 0; i < n; i++) {
-		var row = [];
-		for (var j = 0; j < n; j++) {
-			row.push(document.getElementById(i+""+j).value);
+	let arr = [];
+	for (let i = 0; i < n; i++) {
+		let row = [];
+		for (let j = 0; j < n; j++) {
+			row.push(document.getElementById(`${i}${j}`).value);
 		}
 		arr.push(row);
 	}
@@ -96,10 +96,10 @@ function calculateDeterminant() {
 
 /* Recursive determinant calculation function. */
 function det(arr) {
-	var n = arr.length;
+	const n = arr.length;
 	if (n == 1) return arr[0][0];
-	var ans = 0;
-	for (var j = 0; j < n; j++) {
+	let ans = 0;
+	for (let j = 0; j < n; j++) {
 		if (j%2 == 0) ans += arr[0][j] * det(subArr(arr,j));
 		else ans -= arr[0][j] * det(subArr(arr,j));
 	}
@@ -108,11 +108,11 @@ function det(arr) {
 
 /* Given NxN array, return (N-1)x(N-1) array corresponding to removing 0th row and j'th column. */
 function subArr(arr,j) {
-	var n = arr.length;
-	var ans = [];
-	for (var r = 1; r < n; r++) {
-		var row = [];
-		for (var c = 0; c < n; c++) {
+	const n = arr.length;
+	let ans = [];
+	for (let r = 1; r < n; r++) {
+		let row = [];
+		for (let c = 0; c < n; c++) {
 			if (c == j) continue;
 			row.push(arr[r][c]);
 		}
