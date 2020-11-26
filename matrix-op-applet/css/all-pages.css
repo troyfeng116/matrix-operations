@@ -28,13 +28,16 @@ body div {
 
 .page-body-container {
 	display: flex;
-	min-height: 500px;
+	flex-direction: column;
 }
 
 .page-body {
-	flex: 7;
+	flex: 1;
 	padding: 0 40px;
 	display: flex;
+	justify-content: center;
+	min-height: 500px;
+	width: 90%;
 }
 
 /* Footer container styling. */

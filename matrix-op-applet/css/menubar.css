@@ -2,15 +2,14 @@
 
 .menubar {
 	flex: 2;
-	min-width: fit-content;
+	width: 90%;
 	display: flex;
-	flex-direction: column;
-	list-style: none;
-	margin-top: 40px;
+	margin: auto;
+	margin-top: 8px;
 }
 
 .menubar-link {
-	display: block;
+	flex: 1;
 	text-decoration: none;
 	color: rgb(50, 50, 50);
 	font-size: 20px;
@@ -20,11 +19,11 @@
 	text-transform: uppercase;
 	padding: 20px;
 	border: 1px solid rgb(50, 50, 50);
-	border-top: none;
+	border-left: none;
 }
 
 .menubar-link:first-child {
-	border-top: 1px solid rgb(50, 50, 50);
+	border-left: 1px solid rgb(50, 50, 50);
 }
 
 .menubar-link:hover {
@@ -34,10 +33,8 @@
 
 .menubar-link.active {
 	border-right: 1px solid black;
-	background-color: rgb(50, 50, 50);
+	background-color: gray;
 	color: gold;
-	transform: scale(1.05);
-	border-radius: 10px;
 }
 
 .menubar-fill {

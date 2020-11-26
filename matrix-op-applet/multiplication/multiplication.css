@@ -12,32 +12,19 @@
 	background-color: white;
 }
 
-#gridContainer1 {
-	position: absolute;
-	top: 60%;
-	left: 30%;
-	transform: translate(-50%, -50%);
+.multiplication-grids-container {
+	display: flex;
 }
 
-#gridContainer2 {
-	position: absolute;
-	top: 60%;
-	left: 60%;
-	transform: translate(-50%, -50%);
-	float: left;
+#gridContainer1 {
+	margin-right: 40px;
 }
+
+#gridContainer2 {}
 
 /* Position second input container properly. */
 
 #secondInputContainer {
 	left: 75%;
 	top: 65%;
-}
-
-/* Position output container */
-
-#outputContainer {
-	top: 90%;
-	left: 50%;
-	transform: translate(-50%, 0);
 }

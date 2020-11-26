@@ -101,8 +101,8 @@ function generateGrids() {
 	grid1.style.width = N <= 4 && M <= 4 ? `${60 * N}px` : `${48 * N}px`;
 	grid1.style.gridTemplateRows = `repeat(${M},1fr)`;
 	grid1.style.gridTemplateColumns = `repeat(${N},1fr)`;
-	for (var i = 0; i < M; i++) {
-		for (var j = 0; j < N; j++) {
+	for (let i = 0; i < M; i++) {
+		for (let j = 0; j < N; j++) {
 			const inputBox = document.createElement("input");
 			inputBox.type = "text";
 			inputBox.size = "3";
