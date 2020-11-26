@@ -1,38 +1,43 @@
 /* Style the two grid containers. */
+
 .gridContainer {
-	visibility:hidden;
-	border:1px solid black;
-	border-radius:30px;
-	border-top:none;
-	border-bottom:none;
-	display:grid;
-	padding:20px;
-	grid-gap:10px;
-	background-color:white;
+	visibility: hidden;
+	border: 1px solid black;
+	border-radius: 30px;
+	border-top: none;
+	border-bottom: none;
+	display: grid;
+	padding: 20px;
+	grid-gap: 10px;
+	background-color: white;
 }
+
 #gridContainer1 {
-	position:absolute;
-	top:60%;
-	left:30%;
-	transform:translate(-50%,-50%);
+	position: absolute;
+	top: 60%;
+	left: 30%;
+	transform: translate(-50%, -50%);
 }
+
 #gridContainer2 {
-	position:absolute;
-	top:60%;
-	left:60%;
-	transform:translate(-50%,-50%);
-	float:left;
+	position: absolute;
+	top: 60%;
+	left: 60%;
+	transform: translate(-50%, -50%);
+	float: left;
 }
 
 /* Position second input container properly. */
+
 #secondInputContainer {
-	left:75%;
-	top:65%;
+	left: 75%;
+	top: 65%;
 }
 
 /* Position output container */
+
 #outputContainer {
-	top:90%;
-	left:50%;
-	transform:translate(-50%,0);
+	top: 90%;
+	left: 50%;
+	transform: translate(-50%, 0);
 }
