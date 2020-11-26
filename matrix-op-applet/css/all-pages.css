@@ -20,6 +20,10 @@ body div {
 	font-family: copperplate;
 }
 
+#heading:hover {
+	cursor: pointer;
+}
+
 #heading h1 {
 	text-align: center;
 	text-transform: uppercase;

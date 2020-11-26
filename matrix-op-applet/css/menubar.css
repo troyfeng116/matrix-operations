@@ -41,3 +41,15 @@
 	flex: 10;
 	background-color: gray;
 }
+
+@media only screen and (max-width: 1000px) {
+	.menubar-hide-when-small {
+		display: none;
+	}
+	.menubar {
+		width: 100%;
+	}
+	.menubar-link {
+		border-right: none;
+	}
+}
